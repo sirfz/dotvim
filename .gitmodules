@@ -22,4 +22,3 @@
 	path = bundle/nerdtree
         url = git@github.com:scrooloose/nerdtree.git
         ignore = dirty
-     
