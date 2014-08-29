@@ -9,10 +9,6 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 
-" colorscheme
-set background=dark
-colorscheme solarized
-
 "au FileType python set omnifunc=pythoncomplete#Complete
 "let g:SuperTabDefaultCompletionType = "context"
 
@@ -58,12 +54,15 @@ set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " Always show statusline
 set laststatus=2
 
-" Use 256 colours (Use this setting only if your terminal supports 256
-" colours)
-set t_Co=256
+" 256/16 colours (Use what's supported by your terminal)
+set t_Co=16
+
+" colorscheme
+set background=dark
+colorscheme solarized
 
 " fancy (for gvim)
-let g:Powerline_symbols='fancy'
+" let g:Powerline_symbols='fancy'
 " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
 set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
 
