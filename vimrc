@@ -51,6 +51,15 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " vim-airline powerline symbols
 let g:airline_powerline_fonts = 1
 
+" airline tabline
+let g:airline#extensions#tabline#enabled = 1
+
+" display tab number
+let g:airline#extensions#tabline#tab_nr_type = 1
+
+" bufferline
+let g:airline#extensions#bufferline#enabled = 1
+
 " powerline statusline
 " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 

@@ -28,4 +28,5 @@
         ignore = dirty
 [submodule "bundle/vim-airline"]
 	path = bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
+        url = git@github.com:bling/vim-airline.git
+        ignore = dirty
