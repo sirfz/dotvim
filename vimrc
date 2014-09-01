@@ -48,8 +48,11 @@ map <C-n> :NERDTreeToggle<CR>
 " close vim if NERD is last open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" vim-airline powerline symbols
+let g:airline_powerline_fonts = 1
+
 " powerline statusline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
 " Always show statusline
 set laststatus=2
