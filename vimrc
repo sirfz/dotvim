@@ -84,6 +84,3 @@ nnoremap <F5> :GundoToggle<CR>
 " pymode lint error sort
 let g:pymode_lint_sort = ['E', 'C', 'I']
 
-" pymode error jumping
-map ]l :lnext<CR>
-map [l :lprevious<CR>
