@@ -60,6 +60,9 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 " bufferline
 let g:airline#extensions#bufferline#enabled = 1
 
+" display buffer number
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
 " powerline statusline
 " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
