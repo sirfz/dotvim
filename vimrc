@@ -87,3 +87,6 @@ nnoremap <F5> :GundoToggle<CR>
 " pymode lint error sort
 let g:pymode_lint_sort = ['E', 'C', 'I']
 
+" pymode rope offer import after complete
+let g:pymode_rope_autoimport_import_after_complete = 1
+
