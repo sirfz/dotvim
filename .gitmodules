@@ -38,3 +38,7 @@
 	path = bundle/supertab
 	url = git@github.com:ervandew/supertab.git
         ignore = dirty
+[submodule "bundle/ack.vim"]
+	path = bundle/ack.vim
+	url = git@github.com:mileszs/ack.vim.git
+        ignore = dirty
