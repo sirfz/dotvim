@@ -87,6 +87,16 @@ nnoremap <F5> :GundoToggle<CR>
 " pymode lint error sort
 let g:pymode_lint_sort = ['E', 'C', 'I']
 
-" pymode rope offer import after complete
-let g:pymode_rope_autoimport_import_after_complete = 1
+" disable rope in favor of jedi
+" let g:pymode_rope = 0
+" disable rope completion
+let g:pymode_rope_completion = 0
 
+" disable pymode documentation
+let g:pymode_doc = 0
+
+" pymode rope offer import after complete
+" let g:pymode_rope_autoimport_import_after_complete = 1
+
+" jedi mappings
+let g:jedi#rename_command = "<leader>m"
