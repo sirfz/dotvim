@@ -5,10 +5,17 @@ Installation:
 Create symlinks:
 
     ln -s ~/.vim/vimrc ~/.vimrc
-    ln -s ~/.vim/gvimrc ~/.gvimrc
 
 Switch to the `~/.vim` directory, and fetch submodules:
 
     cd ~/.vim
-    git submodule init
-    git submodule update
+    git submodule update --init
+
+In case you pulled the repo and it contains new submodule(s):
+
+    git submodule update --init bundle/<submodule-name>
+
+For [jedi-vim](https://github.com/davidhalter/jedi-vim), you'll need to update it's submodule:
+
+    cd ~/.vim/bundle/jedi-vim
+    git submodule update --init
