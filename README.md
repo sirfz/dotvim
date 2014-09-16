@@ -15,7 +15,7 @@ In case you pulled the repo and it contains new submodule(s):
 ```sh
 git submodule update --init bundle/<submodule-name>
 ```
-For [jedi-vim](https://github.com/davidhalter/jedi-vim), you'll need to update it's submodule:
+For [jedi-vim](https://github.com/davidhalter/jedi-vim), you'll need to update its submodule:
 ```sh
 cd ~/.vim/bundle/jedi-vim
 git submodule update --init
