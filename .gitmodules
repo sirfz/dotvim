@@ -46,3 +46,7 @@
 	path = bundle/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
         ignore = dirty
+[submodule "bundle/jedi-vim"]
+	path = bundle/jedi-vim
+	url = git@github.com:davidhalter/jedi-vim.git
+        ignore = dirty
