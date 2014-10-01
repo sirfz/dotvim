@@ -63,6 +63,9 @@ let g:airline#extensions#bufferline#enabled = 1
 " display buffer number
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
+" airline theme
+" let g:airline_theme = "powerlineish"
+
 " powerline statusline
 " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 
@@ -106,3 +109,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" automatically close quickfix if it's the only window left
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
+aug END
