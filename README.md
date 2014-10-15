@@ -9,14 +9,11 @@ ln -s ~/.vim/vimrc ~/.vimrc
 Switch to the `~/.vim` directory, and fetch submodules:
 ```sh
 cd ~/.vim
-git submodule update --init
+git submodule update --init --recursive
 ```
-In case you pulled the repo and it contains new submodule(s):
+Re-run the above in case you ran a `pull` on the repo and it contained new submodule(s)
+
+To pull all submodules:
 ```sh
-git submodule update --init bundle/<submodule-name>
-```
-For [jedi-vim](https://github.com/davidhalter/jedi-vim), you'll need to update its submodule:
-```sh
-cd ~/.vim/bundle/jedi-vim
-git submodule update --init
+git pull --recurse-submodules
 ```
