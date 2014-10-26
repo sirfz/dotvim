@@ -21,6 +21,7 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'vim-scripts/TaskList.vim'
 
 " All Plugins must be added before the following line
 call vundle#end()            
