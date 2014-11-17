@@ -21,6 +21,8 @@ Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/TaskList.vim'
 
 " All Plugins must be added before the following line
@@ -141,3 +143,6 @@ aug QFClose
   au!
   au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif
 aug END
+
+" FormatJSON command (usage: :FormatJSON)
+com! FormatJSON %!python -m json.tool
