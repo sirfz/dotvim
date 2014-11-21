@@ -146,3 +146,6 @@ aug END
 
 " FormatJSON command (usage: :FormatJSON)
 com! FormatJSON %!python -m json.tool
+
+" pymode (lint) max line length
+let g:pymode_options_max_line_length = 120
