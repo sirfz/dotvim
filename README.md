@@ -11,8 +11,6 @@ Switch to the `~/.vim` directory, and fetch submodules (mainly Vundle):
 cd ~/.vim
 git submodule update --init --recursive
 ```
-Re-run the above in case you ran a `pull` on the repo and it contained new submodule(s)
-
 To install plugins, start vim and run:
 ```
 :PluginInstall
