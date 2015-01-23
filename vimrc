@@ -149,3 +149,6 @@ com! FormatJSON %!python -m json.tool
 
 " pymode (lint) max line length
 let g:pymode_options_max_line_length = 120
+
+" vertical diff
+set diffopt=filler,vertical
