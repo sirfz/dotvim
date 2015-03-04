@@ -26,6 +26,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/TaskList.vim'
+Plugin 'tmhedberg/SimpylFold'
 
 " All Plugins must be added before the following line
 call vundle#end()            
@@ -191,6 +192,10 @@ nnoremap <F5> :GundoToggle<CR>
     let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
 
+    " Better :sign interface symbols
+    let g:syntastic_error_symbol = '✗'
+    let g:syntastic_warning_symbol = '!'
+
     " Use flake8
     let g:syntastic_python_checkers = ['flake8']
 
@@ -228,8 +233,8 @@ set cc=120
 set diffopt=filler,vertical
 
 " python folding
-set foldmethod=indent
-set foldlevel=99
+" set foldmethod=indent
+" set foldlevel=99
 
 " Reload Vimrc
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
