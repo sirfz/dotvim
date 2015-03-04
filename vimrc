@@ -179,7 +179,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#usages_command = "<leader>pu"
     let g:jedi#rename_command = "<leader>pr"
     " jedi mappings
-    " let g:jedi#rename_command = "<leader>m"
+    let g:jedi#rename_command = "<leader>m"
 " }
 
 " syntastic {
