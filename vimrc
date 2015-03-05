@@ -230,7 +230,7 @@ com! FormatJSON %!python -m json.tool
 set cc=120
 
 " vertical diff
-set diffopt=filler,vertical
+set diffopt+=vertical
 
 " python folding
 " set foldmethod=indent
