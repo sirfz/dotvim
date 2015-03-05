@@ -27,6 +27,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'fatih/vim-go'
 
 " All Plugins must be added before the following line
 call vundle#end()            
