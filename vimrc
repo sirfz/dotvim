@@ -16,10 +16,10 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
 " Plugin 'klen/python-mode'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
@@ -167,17 +167,17 @@ nnoremap <F5> :GundoToggle<CR>
 " PYMODE
 
 " jedi-vim {
-    let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#popup_select_first = 0
-    let g:jedi#completions_enabled = 0
-    let g:jedi#completions_command = ""
-    let g:jedi#show_call_signatures = "1"
-    let g:jedi#goto_assignments_command = ""
-    let g:jedi#goto_definitions_command = ""
-    let g:jedi#documentation_command = "K"
-    let g:jedi#usages_command = "<leader>pu"
-    let g:jedi#rename_command = "<leader>pr"
+    " let g:jedi#auto_vim_configuration = 0
+    " let g:jedi#popup_on_dot = 0
+    " let g:jedi#popup_select_first = 0
+    " let g:jedi#completions_enabled = 0
+    " let g:jedi#completions_command = ""
+    " let g:jedi#show_call_signatures = "1"
+    " let g:jedi#goto_assignments_command = ""
+    " let g:jedi#goto_definitions_command = ""
+    " let g:jedi#documentation_command = "K"
+    " let g:jedi#usages_command = "<leader>pu"
+    " let g:jedi#rename_command = "<leader>pr"
     " jedi mappings
     let g:jedi#rename_command = "<leader>m"
 " }
@@ -206,9 +206,9 @@ nnoremap <F5> :GundoToggle<CR>
 
 " ycm {
     " maps
-    nnoremap <leader>g :YcmCompleter GoTo<CR>
-    let g:ycm_goto_buffer_command = 'new-tab'
-    let g:ycm_autoclose_preview_window_after_completion = 1
+    " nnoremap <leader>g :YcmCompleter GoTo<CR>
+    " let g:ycm_goto_buffer_command = 'new-tab'
+    " let g:ycm_autoclose_preview_window_after_completion = 1
 " }
 
 " split windows navigation
