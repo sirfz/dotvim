@@ -17,9 +17,12 @@ Plugin 'sjl/gundo.vim'
 " Plugin 'klen/python-mode'
 Plugin 'scrooloose/syntastic'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'
+Plugin 'davidhalter/jedi-vim'  " python completion
+Plugin 'Shougo/neocomplete.vim'  " cached completion
+Plugin 'Shougo/vimproc.vim'  " for asynch autocomplete
 Plugin 'scrooloose/nerdtree'
-Plugin 'ervandew/supertab'
+" Plugin 'ervandew/supertab'
+" Plugin 'Shougo/echodoc.vim'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
@@ -30,7 +33,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'fatih/vim-go'
 
 " All Plugins must be added before the following line
-call vundle#end()            
+call vundle#end()
 
 syntax on
 filetype plugin indent on
@@ -70,6 +73,8 @@ set ignorecase " Default to using case insensitive searches,
 set smartcase " unless uppercase letters are used in the regex.
 set hlsearch " Highlight searches by default.
 set incsearch " Incrementally search while typing a /regex
+
+set noshowmode " don't show mode
 
 "au FileType python set omnifunc=pythoncomplete#Complete
 "let g:SuperTabDefaultCompletionType = "context"
@@ -168,12 +173,12 @@ nnoremap <F5> :GundoToggle<CR>
 " PYMODE
 
 " jedi-vim {
-    " let g:jedi#auto_vim_configuration = 0
+    let g:jedi#auto_vim_configuration = 0
     " let g:jedi#popup_on_dot = 0
     " let g:jedi#popup_select_first = 0
-    " let g:jedi#completions_enabled = 0
+    let g:jedi#completions_enabled = 0
     " let g:jedi#completions_command = ""
-    " let g:jedi#show_call_signatures = "1"
+    " let g:jedi#show_call_signatures = 1
     " let g:jedi#goto_assignments_command = ""
     " let g:jedi#goto_definitions_command = ""
     " let g:jedi#documentation_command = "K"
@@ -181,6 +186,48 @@ nnoremap <F5> :GundoToggle<CR>
     " let g:jedi#rename_command = "<leader>pr"
     " jedi mappings
     let g:jedi#rename_command = "<leader>m"
+" }
+
+" neocomplete {
+    let g:neocomplete#enable_at_startup = 1
+    " Use smartcase.
+    let g:neocomplete#enable_smart_case = 1
+    " async autocomplete
+    let g:neocomplete#use_vimproc = 1
+	" Set minimum syntax keyword length.
+	let g:neocomplete#sources#syntax#min_keyword_length = 3
+	let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+    " Define keyword
+	if !exists('g:neocomplete#keyword_patterns')
+	    let g:neocomplete#keyword_patterns = {}
+	endif
+	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+    " Plugin key-mappings.
+    inoremap <expr><C-g>     neocomplete#undo_completion()
+    inoremap <expr><C-l>     neocomplete#complete_common_string()
+	" Recommended key-mappings.
+	" <CR>: close popup and save indent.
+	inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+	function! s:my_cr_function()
+	  return neocomplete#close_popup() . "\<CR>"
+	  " For no inserting <CR> key.
+	  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+	endfunction
+	" <TAB>: completion.
+	inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+	" <C-h>, <BS>: close popup and delete backword char.
+	inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+	inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+	inoremap <expr><C-y>  neocomplete#close_popup()
+	inoremap <expr><C-e>  neocomplete#cancel_popup()
+    " use jedi for python
+    autocmd FileType python setlocal omnifunc=jedi#completions
+    if !exists('g:neocomplete#force_omni_input_patterns')
+        let g:neocomplete#force_omni_input_patterns = {}
+    endif
+    let g:neocomplete#force_omni_input_patterns.python =
+            \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 " }
 
 " syntastic {
@@ -203,7 +250,7 @@ nnoremap <F5> :GundoToggle<CR>
     " pep8 max line length
     let g:syntastic_python_flake8_args="--max-line-length=120"
 
-" } 
+" }
 
 " ycm {
     " maps
