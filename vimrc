@@ -142,8 +142,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " }
 
 " 256/16 colours (Use what's supported by your terminal)
-set t_Co=16
-" set t_Co=256
+" set t_Co=16
+set t_Co=256
 
 " colorscheme
 set background=dark
