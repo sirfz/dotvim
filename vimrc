@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugins
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -140,10 +141,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " 256/16 colours (Use what's supported by your terminal)
 set t_Co=16
+" set t_Co=256
 
 " colorscheme
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+let base16colorspace=256
+" colorscheme base16-default
+colorscheme base16-solarized
 
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
@@ -174,8 +179,8 @@ nnoremap <F5> :GundoToggle<CR>
 
 " jedi-vim {
     let g:jedi#auto_vim_configuration = 0
-    " let g:jedi#popup_on_dot = 0
-    " let g:jedi#popup_select_first = 0
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#popup_select_first = 0
     let g:jedi#completions_enabled = 0
     " let g:jedi#completions_command = ""
     " let g:jedi#show_call_signatures = 1
