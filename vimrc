@@ -10,7 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugins
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -145,10 +145,10 @@ set t_Co=16
 
 " colorscheme
 set background=dark
-colorscheme solarized
-" let base16colorspace=256
+" colorscheme solarized
+let base16colorspace=256
 " colorscheme base16-default
-" colorscheme base16-solarized
+colorscheme base16-solarized
 
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
@@ -204,7 +204,7 @@ nnoremap <F5> :GundoToggle<CR>
 	let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
     " Define keyword
 	if !exists('g:neocomplete#keyword_patterns')
-	    let g:neocomplete#keyword_patterns = {}
+        let g:neocomplete#keyword_patterns = {}
 	endif
 	let g:neocomplete#keyword_patterns['default'] = '\h\w*'
     " Plugin key-mappings.
@@ -214,9 +214,9 @@ nnoremap <F5> :GundoToggle<CR>
 	" <CR>: close popup and save indent.
 	inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 	function! s:my_cr_function()
-	  return neocomplete#close_popup() . "\<CR>"
-	  " For no inserting <CR> key.
-	  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+        return neocomplete#close_popup() . "\<CR>"
+        " For no inserting <CR> key.
+        "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 	endfunction
 	" <TAB>: completion.
 	inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
