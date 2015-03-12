@@ -10,7 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " plugins
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
+" Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
@@ -145,10 +145,10 @@ set t_Co=16
 
 " colorscheme
 set background=dark
-" colorscheme solarized
-let base16colorspace=256
+colorscheme solarized
+" let base16colorspace=256
 " colorscheme base16-default
-colorscheme base16-solarized
+" colorscheme base16-solarized
 
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
