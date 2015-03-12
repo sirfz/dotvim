@@ -15,6 +15,7 @@ Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'sjl/gundo.vim'
+Plugin 'hdima/python-syntax'
 " Plugin 'klen/python-mode'
 Plugin 'scrooloose/syntastic'
 " Plugin 'Valloric/YouCompleteMe'
@@ -59,7 +60,8 @@ set softtabstop=4 " <BS> over an autoindent deletes both spaces.
 set expandtab " Use spaces, not tabs, for autoindent/tab key.
 set shiftround " rounds indent to a multiple of shiftwidth
 set formatoptions=tcroql " Setting text and comment formatting to auto
-set textwidth=120 " Lines are automatically wrapped after 80 columns
+set textwidth=120 " Lines are automatically wrapped after 120 columns
+set numberwidth=3 " number gutter width
 
 """" Messages, Info, Status
 set ls=2 " allways show status line
@@ -147,8 +149,8 @@ set t_Co=16
 set background=dark
 " colorscheme solarized
 let base16colorspace=256
-" colorscheme base16-default
-colorscheme base16-solarized
+colorscheme base16-default
+" colorscheme base16-solarized
 
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
@@ -176,6 +178,10 @@ nnoremap <F5> :GundoToggle<CR>
 " pymode rope offer import after complete
 " let g:pymode_rope_autoimport_import_after_complete = 1
 " PYMODE
+
+" python-vim {
+    let python_highlight_all = 1
+" }
 
 " jedi-vim {
     let g:jedi#auto_vim_configuration = 0
@@ -244,6 +250,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:syntastic_auto_loc_list = 1
     let g:syntastic_check_on_open = 0
     let g:syntastic_check_on_wq = 0
+    let g:syntastic_loc_list_height = 5
 
     " Better :sign interface symbols
     let g:syntastic_error_symbol = '✗'
