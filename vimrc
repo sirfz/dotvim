@@ -33,6 +33,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'fatih/vim-go'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " All Plugins must be added before the following line
 call vundle#end()
