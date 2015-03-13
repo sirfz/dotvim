@@ -148,6 +148,7 @@ set t_Co=256
 " colorscheme
 set background=dark
 " colorscheme solarized
+let g:base16_shell_path="~/.config/base16-builder/output/shell/"
 let base16colorspace=256
 colorscheme base16-default
 " colorscheme base16-solarized
