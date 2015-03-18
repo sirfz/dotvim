@@ -42,8 +42,9 @@ call vundle#end()
 
 syntax on
 filetype plugin indent on
-set number
-set title
+set number " line numbers
+set title " display file title in console
+set hidden " hide buffers when switching to preserve history
 
 """ Moving Around/Editing
 set cursorline " have a line indicate the cursor location
