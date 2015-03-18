@@ -34,6 +34,8 @@ Plugin 'vim-scripts/TaskList.vim'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'fatih/vim-go'
 Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'groenewege/vim-less'
+Plugin 'valloric/MatchTagAlways'
 
 " All Plugins must be added before the following line
 call vundle#end()
@@ -241,6 +243,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:neocomplete#force_omni_input_patterns.python =
             \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     " alternative pattern: '\h\w*\|[^. \t]\.\w*'
+    autocmd FileType python setlocal omnifunc=go#complete#Complete
 " }
 
 " syntastic {
@@ -271,6 +274,10 @@ nnoremap <F5> :GundoToggle<CR>
     " nnoremap <leader>g :YcmCompleter GoTo<CR>
     " let g:ycm_goto_buffer_command = 'new-tab'
     " let g:ycm_autoclose_preview_window_after_completion = 1
+" }
+
+" go {
+    let g:go_fmt_command = "goimports"
 " }
 
 " split windows navigation
