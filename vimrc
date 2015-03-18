@@ -191,7 +191,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#auto_vim_configuration = 0
     let g:jedi#popup_on_dot = 0
     let g:jedi#popup_select_first = 0
-    let g:jedi#completions_enabled = 0
+    let g:jedi#completions_enabled = 1
     " let g:jedi#completions_command = ""
     " let g:jedi#show_call_signatures = 1
     " let g:jedi#goto_assignments_command = ""
@@ -243,7 +243,10 @@ nnoremap <F5> :GundoToggle<CR>
     let g:neocomplete#force_omni_input_patterns.python =
             \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     " alternative pattern: '\h\w*\|[^. \t]\.\w*'
-    autocmd FileType python setlocal omnifunc=go#complete#Complete
+    if !exists('g:neocomplete#sources#omni#functions')
+        let g:neocomplete#sources#omni#functions = {}
+    endif
+    let g:neocomplete#sources#omni#functions.go = 'go#complete#Complete'
 " }
 
 " syntastic {
