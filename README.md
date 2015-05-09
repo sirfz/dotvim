@@ -11,7 +11,11 @@ Switch to the `~/.vim` directory, and fetch submodules (mainly Vundle):
 cd ~/.vim
 git submodule update --init --recursive
 ```
-To install plugins, start vim and run:
+To install all plugins, run:
+```sh
+vim +PluginInstall
 ```
-:PluginInstall
+Compile vimproc in ~/.vim/bundle/vimproc.vim:
+```sh
+cd ~/.vim/bundle/vimproc.vim && make
 ```
