@@ -323,3 +323,6 @@ cmap w!! w !sudo tee % >/dev/null
 " and lets make these all work in insert mode too ( <C-O> makes next cmd
 " happen as if in command mode )
 imap <C-W> <C-O><C-W>
+
+" select pasted text
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
