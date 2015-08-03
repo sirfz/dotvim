@@ -161,7 +161,8 @@ colorscheme base16-default
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
 " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
-set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+" set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
+set guifont=Monoid\ 12
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
