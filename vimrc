@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " plugins
-Plugin 'altercation/vim-colors-solarized'
+" Plugin 'altercation/vim-colors-solarized'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 Plugin 'mileszs/ack.vim'
@@ -196,7 +196,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#popup_select_first = 0
     let g:jedi#completions_enabled = 1
     " let g:jedi#completions_command = ""
-    " let g:jedi#show_call_signatures = 1
+    let g:jedi#show_call_signatures = 2
     " let g:jedi#goto_assignments_command = ""
     " let g:jedi#goto_definitions_command = ""
     " let g:jedi#documentation_command = "K"
