@@ -1,47 +1,79 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  if &compatible
+    set nocompatible               " Be iMproved
+  endif
+
+  " Required:
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('~/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+" NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'hdima/python-syntax'
+" NeoBundle 'klen/python-mode'
+NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'Valloric/YouCompleteMe'
+NeoBundle 'davidhalter/jedi-vim'  " python completion
+NeoBundle 'Shougo/neocomplete.vim'  " cached completion
+NeoBundle 'Shougo/vimproc.vim', {'build': {'linux': 'make'}}  " for asynch autocomplete
+NeoBundle 'scrooloose/nerdtree'
+" NeoBundle 'ervandew/supertab'
+" NeoBundle 'Shougo/echodoc.vim'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'vim-scripts/TaskList.vim'
+NeoBundle 'tmhedberg/SimpylFold'
+NeoBundle 'fatih/vim-go'
+NeoBundle 'hynek/vim-python-pep8-indent'
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'valloric/MatchTagAlways'
+
+" You can specify revision/branch/tag.
+" NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+" End NeoBundle Scripts-------------------------
+
+" filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" set rtp+=~/.vim/bundle/Vundle.vim
+" call vundle#begin()
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Plugin 'gmarik/Vundle.vim'
 
 " plugins
-" Plugin 'altercation/vim-colors-solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'bling/vim-airline'
-Plugin 'mileszs/ack.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'sjl/gundo.vim'
-Plugin 'hdima/python-syntax'
-" Plugin 'klen/python-mode'
-Plugin 'scrooloose/syntastic'
-" Plugin 'Valloric/YouCompleteMe'
-Plugin 'davidhalter/jedi-vim'  " python completion
-Plugin 'Shougo/neocomplete.vim'  " cached completion
-Plugin 'Shougo/vimproc.vim'  " for asynch autocomplete
-Plugin 'scrooloose/nerdtree'
-" Plugin 'ervandew/supertab'
-" Plugin 'Shougo/echodoc.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'vim-scripts/TaskList.vim'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'fatih/vim-go'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'groenewege/vim-less'
-Plugin 'valloric/MatchTagAlways'
 
 " All Plugins must be added before the following line
-call vundle#end()
+" call vundle#end()
 
 syntax on
-filetype plugin indent on
+" filetype plugin indent on
 set number " line numbers
 set title " display file title in console
 set hidden " hide buffers when switching to preserve history
