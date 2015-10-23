@@ -27,9 +27,11 @@ NeoBundle 'hdima/python-syntax'
 NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'davidhalter/jedi-vim'  " python completion
-NeoBundle 'Shougo/neocomplete.vim'  " cached completion
 NeoBundle 'Shougo/vimproc.vim', {'build': {'linux': 'make'}}  " for asynch autocomplete
-NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'Shougo/neocomplete.vim'  " cached completion
+" NeoBundle 'Shougo/neomru.vim'
+" NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'scrooloose/nerdtree'
 " NeoBundle 'ervandew/supertab'
 " NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'tpope/vim-commentary'
@@ -185,8 +187,8 @@ set t_Co=256
 " colorscheme
 set background=dark
 " colorscheme solarized
-let g:base16_shell_path="~/.config/base16-builder/output/shell/"
 let base16colorspace=256
+let g:base16_shell_path="~/.config/base16-builder/output/shell/"
 colorscheme base16-default
 " colorscheme base16-solarized
 
@@ -217,6 +219,24 @@ nnoremap <F5> :GundoToggle<CR>
 " pymode rope offer import after complete
 " let g:pymode_rope_autoimport_import_after_complete = 1
 " PYMODE
+
+" Unite {
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
+"call unite#custom#source('file_rec/async','sorters','sorter_rank', )
+" replacing unite with ctrl-p
+" let g:unite_data_directory='~/.vim/.cache/unite'
+" let g:unite_enable_start_insert=1
+" let g:unite_source_history_yank_enable=1
+" let g:unite_prompt='» '
+" let g:unite_split_rule = 'botright'
+" if executable('ack')
+" let g:unite_source_grep_command='ack'
+" let g:unite_source_grep_default_opts='--nocolor --nogroup -S -C4'
+" let g:unite_source_grep_recursive_opt=''
+" endif
+" nnoremap <silent> <c-p> :Unite -auto-resize file file_mru file_rec/async<cr>
+" }
 
 " python-vim {
     let python_highlight_all = 1
