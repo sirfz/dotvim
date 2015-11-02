@@ -18,6 +18,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 " NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
@@ -336,6 +337,11 @@ nnoremap <F5> :GundoToggle<CR>
 
 " go {
     let g:go_fmt_command = "goimports"
+" }
+
+" indent-guides {
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
 " }
 
 " split windows navigation
