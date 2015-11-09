@@ -32,7 +32,7 @@ NeoBundle 'Shougo/vimproc.vim', {'build': {'linux': 'make'}}  " for asynch autoc
 NeoBundle 'Shougo/neocomplete.vim'  " cached completion
 " NeoBundle 'Shougo/neomru.vim'
 " NeoBundle 'Shougo/unite.vim'
-" NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/nerdtree'
 " NeoBundle 'ervandew/supertab'
 " NeoBundle 'Shougo/echodoc.vim'
 NeoBundle 'tpope/vim-commentary'
@@ -245,11 +245,12 @@ nnoremap <F5> :GundoToggle<CR>
 
 " jedi-vim {
     let g:jedi#auto_vim_configuration = 0
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#popup_select_first = 0
-    let g:jedi#completions_enabled = 1
-    " let g:jedi#completions_command = ""
+    let g:jedi#completions_enabled = 0
+	let g:jedi#smart_auto_mappings = 0
     let g:jedi#show_call_signatures = 2
+    " let g:jedi#completions_command = ""
+    " let g:jedi#popup_on_dot = 0
+    " let g:jedi#popup_select_first = 0
     " let g:jedi#goto_assignments_command = ""
     " let g:jedi#goto_definitions_command = ""
     " let g:jedi#documentation_command = "K"
