@@ -19,7 +19,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sjl/gundo.vim'
@@ -175,7 +176,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
     let g:airline#extensions#tabline#buffer_nr_show = 1
 
     " airline theme
-    " let g:airline_theme = "powerlineish"
+    " let g:airline_theme = "base16_default"
 
     " powerline statusline
     " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
