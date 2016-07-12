@@ -18,13 +18,17 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 " NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'chriskempson/base16-vim'
+" NeoBundle 'joshdick/onedark.vim'
+" NeoBundle 'gosukiwi/vim-atom-dark'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
+" NeoBundle 'joshdick/airline-onedark.vim'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'sjl/gundo.vim'
-NeoBundle 'hdima/python-syntax'
+NeoBundle 'sheerun/vim-polyglot'
+" NeoBundle 'hdima/python-syntax'
 " NeoBundle 'klen/python-mode'
 NeoBundle 'scrooloose/syntastic'
 " NeoBundle 'Valloric/YouCompleteMe'
@@ -45,7 +49,7 @@ NeoBundle 'vim-scripts/TaskList.vim'
 NeoBundle 'vim-scripts/FastFold'
 NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'fatih/vim-go'
-NeoBundle 'hynek/vim-python-pep8-indent'
+" NeoBundle 'hynek/vim-python-pep8-indent'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'valloric/MatchTagAlways'
 
@@ -178,6 +182,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
     " airline theme
     " let g:airline_theme = "base16_default"
+    " let g:airline_theme = "onedark"
 
     " powerline statusline
     " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
@@ -192,14 +197,18 @@ set background=dark
 " colorscheme solarized
 let base16colorspace=256
 let g:base16_shell_path="~/.config/base16-builder/output/shell/"
-colorscheme base16-default
+colorscheme base16-default-dark
 " colorscheme base16-solarized
+" One Dark
+" let g:onedark_termcolors=256
+" colorscheme onedark
+" colorscheme atom-dark-256
 
 " fancy (for gvim)
 " let g:Powerline_symbols='fancy'
 " set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
 " set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-set guifont=Monoid\ 12
+set guifont=Monoid\ 11
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
