@@ -30,7 +30,8 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'sheerun/vim-polyglot'
 " NeoBundle 'hdima/python-syntax'
 " NeoBundle 'klen/python-mode'
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
+NeoBundle 'maralla/validator.vim'
 " NeoBundle 'Valloric/YouCompleteMe'
 NeoBundle 'davidhalter/jedi-vim'  " python completion
 NeoBundle 'Shougo/vimproc.vim', {'build': {'linux': 'make'}}  " for asynch autocomplete
