@@ -1,89 +1,37 @@
-" NeoBundle Scripts-----------------------------
-if has('vim_starting')
-  if &compatible
-    set nocompatible               " Be iMproved
-  endif
-
-  " Required:
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
 " Required:
-call neobundle#begin(expand('~/.vim/bundle'))
-
-" Let NeoBundle manage NeoBundle
-" Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/bundle')
 
 " Add or remove your Bundles here:
-" NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'chriskempson/base16-vim'
-" NeoBundle 'joshdick/onedark.vim'
-" NeoBundle 'gosukiwi/vim-atom-dark'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-" NeoBundle 'joshdick/airline-onedark.vim'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'sjl/gundo.vim'
-NeoBundle 'sheerun/vim-polyglot'
-" NeoBundle 'hdima/python-syntax'
-" NeoBundle 'klen/python-mode'
-" NeoBundle 'scrooloose/syntastic'
-NeoBundle 'maralla/validator.vim'
-" NeoBundle 'Valloric/YouCompleteMe'
-NeoBundle 'davidhalter/jedi-vim'  " python completion
-NeoBundle 'Shougo/vimproc.vim', {'build': {'linux': 'make'}}  " for asynch autocomplete
-NeoBundle 'Shougo/neocomplete.vim'  " cached completion
-" NeoBundle 'Shougo/neomru.vim'
-" NeoBundle 'Shougo/unite.vim'
-NeoBundle 'scrooloose/nerdtree'
-" NeoBundle 'ervandew/supertab'
-" NeoBundle 'Shougo/echodoc.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'vim-scripts/TaskList.vim'
-NeoBundle 'vim-scripts/FastFold'
-NeoBundle 'tmhedberg/SimpylFold'
-NeoBundle 'fatih/vim-go'
-" NeoBundle 'hynek/vim-python-pep8-indent'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'valloric/MatchTagAlways'
-
-" You can specify revision/branch/tag.
-" NeoBundle 'Shougo/vimshell', { 'rev' : '3787e5' }
+Plug 'chriskempson/base16-vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mileszs/ack.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'sjl/gundo.vim'
+Plug 'sheerun/vim-polyglot'
+" Plug 'scrooloose/syntastic'
+Plug 'maralla/validator.vim'
+Plug 'davidhalter/jedi-vim'  " python completion
+Plug 'Shougo/vimproc.vim', {'do': 'make'}  " for asynch autocomplete
+Plug 'Shougo/neocomplete.vim'  " cached completion
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/TaskList.vim'
+Plug 'vim-scripts/FastFold'
+Plug 'tmhedberg/SimpylFold'
+Plug 'fatih/vim-go', {'for': 'go'}
+Plug 'groenewege/vim-less'
+Plug 'valloric/MatchTagAlways'
 
 " Required:
-call neobundle#end()
+call plug#end()
 
-" Required:
-filetype plugin indent on
-
-" If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
-NeoBundleCheck
-" End NeoBundle Scripts-------------------------
-
-" filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-
-" let Vundle manage Vundle, required
-" Plugin 'gmarik/Vundle.vim'
-
-" plugins
-
-" All Plugins must be added before the following line
-" call vundle#end()
-
-syntax on
-" filetype plugin indent on
+""" Sugar
 set number " line numbers
 set title " display file title in console
 set hidden " hide buffers when switching to preserve history
@@ -319,26 +267,30 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " syntastic {
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+    " set statusline+=%#warningmsg#
+    " set statusline+=%{SyntasticStatuslineFlag()}
+    " set statusline+=%*
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 0
-    let g:syntastic_check_on_wq = 0
-    let g:syntastic_loc_list_height = 5
+    " let g:syntastic_always_populate_loc_list = 1
+    " let g:syntastic_auto_loc_list = 1
+    " let g:syntastic_check_on_open = 0
+    " let g:syntastic_check_on_wq = 0
+    " let g:syntastic_loc_list_height = 5
 
-    " Better :sign interface symbols
-    let g:syntastic_error_symbol = '✗'
-    let g:syntastic_warning_symbol = '!'
+    " " Better :sign interface symbols
+    " let g:syntastic_error_symbol = '✗'
+    " let g:syntastic_warning_symbol = '!'
 
-    " Use flake8
-    let g:syntastic_python_checkers = ['flake8']
+    " " Use flake8
+    " let g:syntastic_python_checkers = ['flake8']
 
-    " pep8 max line length
-    let g:syntastic_python_flake8_args="--max-line-length=120"
+    " " pep8 max line length
+    " let g:syntastic_python_flake8_args="--max-line-length=120"
 
+" }
+
+" validator.vim {
+    let g:validator_auto_open_quickfix = 1
 " }
 
 " ycm {
