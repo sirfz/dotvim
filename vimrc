@@ -2,7 +2,8 @@
 call plug#begin('~/.vim/bundle')
 
 " Add or remove your Bundles here:
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
+Plug 'w0ng/vim-hybrid'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -12,9 +13,12 @@ Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
 Plug 'maralla/validator.vim'
-Plug 'davidhalter/jedi-vim'  " python completion
-Plug 'Shougo/vimproc.vim', {'do': 'make'}  " for asynch autocomplete
-Plug 'Shougo/neocomplete.vim'  " cached completion
+" python completion
+Plug 'davidhalter/jedi-vim'
+" for asynch autocomplete
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+" cached completion
+Plug 'Shougo/neocomplete.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -107,11 +111,27 @@ if has("autocmd")
   augroup END
 endif
 
-" NERDTree
-" ctrl+n toggles NERDTree
-noremap <C-n> :NERDTreeToggle<CR>
-" close vim if NERD is last open window
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" color scheme {
+    " 256/16 colours (Use what's supported by your terminal)
+    " set t_Co=16
+    " set t_Co=256
+
+    " colorscheme
+    set background=dark
+    " let base16colorspace=256
+    " let g:base16_shell_path="~/.config/base16-builder/output/shell/"
+    " colorscheme base16-default-dark
+    colorscheme hybrid
+" }
+
+set guifont=Monoid\ 11
+
+" NERDTree {
+    " ctrl+n toggles NERDTree
+    noremap <C-n> :NERDTreeToggle<CR>
+    " close vim if NERD is last open window
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" }
 
 " vim-airline {
     " vim-airline powerline symbols
@@ -136,28 +156,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
     " powerline statusline
     " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 " }
-
-" 256/16 colours (Use what's supported by your terminal)
-" set t_Co=16
-set t_Co=256
-
-" colorscheme
-set background=dark
-" colorscheme solarized
-let base16colorspace=256
-let g:base16_shell_path="~/.config/base16-builder/output/shell/"
-colorscheme base16-default-dark
-" colorscheme base16-solarized
-" One Dark
-" let g:onedark_termcolors=256
-" colorscheme onedark
-" colorscheme atom-dark-256
-
-" fancy (for gvim)
-" let g:Powerline_symbols='fancy'
-" set guifont=Ubuntu\ Mono\ for\ Powerline\ 12
-" set guifont=Source\ Code\ Pro\ for\ Powerline\ 12
-set guifont=Monoid\ 11
 
 " Gundo
 nnoremap <F5> :GundoToggle<CR>
