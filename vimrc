@@ -113,8 +113,9 @@ endif
 
 " color scheme {
     " 256/16 colours (Use what's supported by your terminal)
-    " set t_Co=16
-    " set t_Co=256
+    if &term == "screen"
+        set t_Co=256
+    endif
 
     " colorscheme
     set background=dark
