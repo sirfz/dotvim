@@ -6,12 +6,7 @@ Create symlinks:
 ```sh
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
-Switch to the `~/.vim` directory, and fetch submodules (NeoBundle):
+To install all plugins, run (using vim-plug):
 ```sh
-cd ~/.vim
-git submodule update --init --recursive
-```
-To install all plugins, run (using NeoBundle):
-```sh
-vim +NeoBundleInstall
+vim +PlugUpdate
 ```
