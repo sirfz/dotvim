@@ -115,6 +115,9 @@ if has("autocmd")
 endif
 
 " color scheme {
+    if has("termguicolors") && match($TERM, "screen") == -1
+        set termguicolors
+    endif
     " 256/16 colours (Use what's supported by your terminal)
     if &term == "screen"
         set t_Co=256
