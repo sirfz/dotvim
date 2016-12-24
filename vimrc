@@ -4,6 +4,7 @@ call plug#begin('~/.vim/bundle')
 " Add or remove your Bundles here:
 " Plug 'chriskempson/base16-vim'
 " Plug 'w0ng/vim-hybrid'
+" Plug 'ajh17/spacegray.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
@@ -129,10 +130,11 @@ endif
     " let g:base16_shell_path="~/.config/base16-builder/output/shell/"
     " colorscheme base16-default-dark
     " colorscheme hybrid
-    colorscheme jellybeans
+    " colorscheme spacegray
     let g:jellybeans_overrides = {
         \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
         \}
+    colorscheme jellybeans
 " }
 
 set guifont=Hack\ 11
