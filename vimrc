@@ -294,7 +294,7 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " validator.vim {
-    let g:validator_auto_open_quickfix = 1
+    let g:validator_auto_open_quickfix = 0
     let g:validator_python_flake8_args = '--max-line-length=120'
 " }
 
