@@ -5,6 +5,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'chriskempson/base16-vim'
 " Plug 'w0ng/vim-hybrid'
 " Plug 'ajh17/spacegray.vim'
+" Plug 'roosta/srcery'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
