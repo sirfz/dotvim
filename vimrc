@@ -15,7 +15,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
-Plug 'maralla/validator.vim'
+" Plug 'maralla/validator.vim'
+Plug 'w0rp/ale'
 """" python completion
 " Plug 'davidhalter/jedi-vim'
 """" for asynch autocomplete
@@ -303,7 +304,17 @@ nnoremap <F5> :GundoToggle<CR>
 
 " validator.vim {
     " let g:validator_auto_open_quickfix = 1
-    let g:validator_python_flake8_args = '--max-line-length=120'
+    " let g:validator_python_flake8_args = '--max-line-length=120'
+" }
+
+" ale {
+    " set statusline+=%{ALEGetStatusLine()}
+    " let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    let g:ale_python_flake8_options = '--max-line-length=120'
+    let g:ale_sign_error = '✗'
+    let g:ale_sign_warning = '!'
+    nmap <silent> ]; <Plug>(ale_next_wrap)
+    nmap <silent> [; <Plug>(ale_previous_wrap)
 " }
 
 " ycm {
