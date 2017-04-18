@@ -14,7 +14,8 @@ Plug 'kien/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
-Plug 'maralla/validator.vim'
+" Plug 'maralla/validator.vim'
+Plug 'w0rp/ale'
 " python completion
 Plug 'davidhalter/jedi-vim'
 " for asynch autocomplete
@@ -135,7 +136,7 @@ endif
     colorscheme jellybeans
 " }
 
-set guifont=Monoid\ 11
+set guifont=Hack\ 11
 
 " NERDTree {
     " ctrl+n toggles NERDTree
@@ -299,8 +300,18 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " validator.vim {
-    let g:validator_auto_open_quickfix = 0
-    let g:validator_python_flake8_args = '--max-line-length=120'
+    " let g:validator_auto_open_quickfix = 1
+    " let g:validator_python_flake8_args = '--max-line-length=120'
+" }
+
+" ale {
+    " set statusline+=%{ALEGetStatusLine()}
+    " let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    let g:ale_python_flake8_options = '--max-line-length=120'
+    let g:ale_sign_error = '✗'
+    let g:ale_sign_warning = '!'
+    nmap <silent> ]; <Plug>(ale_next_wrap)
+    nmap <silent> [; <Plug>(ale_previous_wrap)
 " }
 
 " ycm {
@@ -315,8 +326,12 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " indent-guides {
-let g:indent_guides_start_level=2
-let g:indent_guides_guide_size=1
+    let g:indent_guides_start_level=2
+    let g:indent_guides_guide_size=1
+" }
+
+" SimpylFold {
+    let g:SimpylFold_docstring_preview = 1
 " }
 
 " split windows navigation
