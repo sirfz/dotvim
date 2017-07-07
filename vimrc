@@ -10,7 +10,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
@@ -307,6 +307,14 @@ nnoremap <F5> :GundoToggle<CR>
 " ale {
     " set statusline+=%{ALEGetStatusLine()}
     " let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+    let g:airline#extensions#ale#enabled = 1
+    let airline#extensions#ale#error_symbol = 'E:'
+    let airline#extensions#ale#warning_symbol = 'W:'
+    let g:ale_fixers = {
+    \   'python': [
+    \       'autopep8',
+    \   ],
+    \}
     let g:ale_python_flake8_options = '--max-line-length=120'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
