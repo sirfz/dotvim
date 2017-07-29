@@ -23,7 +23,7 @@ Plug 'w0rp/ale'
 " Plug 'Shougo/vimproc.vim', {'do': 'make'}
 """" cached completion
 " Plug 'Shougo/neocomplete.vim'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
