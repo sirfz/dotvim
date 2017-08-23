@@ -34,6 +34,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Required:
 call plug#end()
