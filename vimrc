@@ -37,6 +37,7 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
+Plug 'Vimjas/vim-python-pep8-indent'
 
 " Required:
 call plug#end()
@@ -133,9 +134,9 @@ endif
     " colorscheme base16-default-dark
     " colorscheme hybrid
     " colorscheme spacegray
-    let g:jellybeans_overrides = {
-        \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-        \}
+    " let g:jellybeans_overrides = {
+    "     \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    "     \}
     colorscheme jellybeans
 " }
 
