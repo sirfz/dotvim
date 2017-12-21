@@ -319,7 +319,7 @@ nnoremap <F5> :GundoToggle<CR>
     \       'autopep8',
     \   ],
     \}
-    let g:ale_python_flake8_options = '--max-line-length=120'
+    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E741'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
     nmap <silent> ]; <Plug>(ale_next_wrap)
