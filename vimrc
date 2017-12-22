@@ -32,8 +32,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/TaskList.vim'
-Plug 'vim-scripts/FastFold'
 Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
 Plug 'fatih/vim-go', {'for': 'go'}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
