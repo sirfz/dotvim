@@ -330,6 +330,7 @@ nnoremap <F5> :GundoToggle<CR>
     " maps
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    let g:ycm_python_binary_path = '/usr/bin/python2.7'
     nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
     nnoremap K :YcmCompleter GetDoc<CR>
