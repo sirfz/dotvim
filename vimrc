@@ -8,8 +8,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'roosta/srcery'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'rbong/vim-crystalline'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sjl/gundo.vim'
@@ -76,6 +77,7 @@ set showcmd " Show incomplete normal mode commands as I type.
 set report=0 " : commands always print changed line count.
 set shortmess+=a " Use [+]/[RO]/[w] for modified/readonly/written.
 set laststatus=2 " Always show statusline, even if only 1 window.
+set showtabline=2 " Always show tab/buffer even if only 1 window
 
 """ Searching and Patterns
 set ignorecase " Default to using case insensitive searches,
@@ -97,6 +99,9 @@ set mouse=a
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
 set ttymouse=xterm
+
+" escape timeout
+set timeoutlen=1000 ttimeoutlen=0
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -154,19 +159,19 @@ set guifont=Hack\ 11
 
 " vim-airline {
     " vim-airline powerline symbols
-    let g:airline_powerline_fonts = 1
+    " let g:airline_powerline_fonts = 1
 
     " airline tabline
-    let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#enabled = 1
 
     " display tab number
-    let g:airline#extensions#tabline#tab_nr_type = 1
+    " let g:airline#extensions#tabline#tab_nr_type = 1
 
     " bufferline
-    let g:airline#extensions#bufferline#enabled = 1
+    " let g:airline#extensions#bufferline#enabled = 1
 
     " display buffer number
-    let g:airline#extensions#tabline#buffer_nr_show = 1
+    " let g:airline#extensions#tabline#buffer_nr_show = 1
 
     " airline theme
     " let g:airline_theme = "base16_default"
@@ -174,6 +179,25 @@ set guifont=Hack\ 11
 
     " powerline statusline
     " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" }
+
+" vim-crystalline {
+function! StatusLine(current)
+  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
+        \ . ' %f%h%w%m%r '
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
+        \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+endfunction
+
+function! TabLine()
+  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
+  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+endfunction
+
+let g:crystalline_statusline_fn = 'StatusLine'
+let g:crystalline_tabline_fn = 'TabLine'
+let g:crystalline_theme = 'jellybeans'
 " }
 
 " Gundo
@@ -322,7 +346,7 @@ nnoremap <F5> :GundoToggle<CR>
     \       'autopep8',
     \   ],
     \}
-    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E741'
+    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E741,W504'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
     nmap <silent> ]; <Plug>(ale_next_wrap)
