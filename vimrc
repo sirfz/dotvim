@@ -11,6 +11,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'rbong/vim-crystalline'
+" Plug 'itchyny/lightline.vim'
+" Plug 'maximbaz/lightline-ale'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'sjl/gundo.vim'
@@ -182,22 +184,68 @@ set guifont=Hack\ 11
 " }
 
 " vim-crystalline {
-function! StatusLine(current)
-  return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
-        \ . ' %f%h%w%m%r '
-        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
-        \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
-        \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
-endfunction
+    function! StatusLine(current, width)
+        let l:s = ''
 
-function! TabLine()
-  let l:vimlabel = has("nvim") ?  " NVIM " : " VIM "
-  return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
-endfunction
+        if a:current
+            let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+        else
+            let l:s .= '%#CrystallineInactive#'
+        endif
+        let l:s .= ' %f%h%w%m%r '
+        if a:current
+            let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+        endif
 
-let g:crystalline_statusline_fn = 'StatusLine'
-let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'jellybeans'
+        let l:s .= '%='
+        if a:current
+            let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+        let l:s .= crystalline#left_mode_sep('')
+        endif
+        if a:width > 80
+            let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+        else
+            let l:s .= ' '
+        endif
+
+        return l:s
+    endfunction
+
+    function! TabLine()
+        let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+        return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+    endfunction
+
+    let g:crystalline_enable_sep = 1
+    let g:crystalline_statusline_fn = 'StatusLine'
+    let g:crystalline_tabline_fn = 'TabLine'
+    let g:crystalline_theme = 'jellybeans'
+" }
+
+" lightline {
+    " let g:lightline = {
+    "   \ 'colorscheme': 'wombat',
+    "   \ 'active': {
+    "   \   'left': [[ 'mode', 'paste' ],
+    "   \            [ 'gitbranch', 'readonly', 'filename', 'modified' ],
+    "   \            [ 'linter_checking', 'linter_errors', 'linter_warnings', 'linter_ok' ]]
+    "   \ },
+    "   \ 'component_function': {
+    "   \   'gitbranch': 'fugitive#head'
+    "   \ },
+    "   \ }
+    " let g:lightline.component_expand = {
+    "   \  'linter_checking': 'lightline#ale#checking',
+    "   \  'linter_warnings': 'lightline#ale#warnings',
+    "   \  'linter_errors': 'lightline#ale#errors',
+    "   \  'linter_ok': 'lightline#ale#ok',
+    "   \ }
+    " let g:lightline.component_type = {
+    "   \     'linter_checking': 'left',
+    "   \     'linter_warnings': 'warning',
+    "   \     'linter_errors': 'error',
+    "   \     'linter_ok': 'left',
+    "   \ }
 " }
 
 " Gundo
