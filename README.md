@@ -1,8 +1,14 @@
-Installation:
+### Requirements:
+
+* [fd](https://github.com/sharkdp/fd) for CtrlP search
+
+### Installation:
+
 ```sh
 git clone git://github.com/sirfz/dotvim.git ~/.vim
 ```
-Create symlinks:
+
+##### Create symlinks:
 ```sh
 ln -s ~/.vim/vimrc ~/.vimrc
 ```
