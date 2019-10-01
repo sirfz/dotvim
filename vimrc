@@ -15,6 +15,9 @@ Plug 'rbong/vim-crystalline'
 " Plug 'maximbaz/lightline-ale'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
@@ -37,8 +40,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-scripts/TaskList.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'groenewege/vim-less', {'for': 'less'}
+" Plug 'fatih/vim-go', {'for': 'go'}
+" Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -147,6 +150,7 @@ endif
     " let g:jellybeans_overrides = {
     "     \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
     "     \}
+    " let g:jellybeans_use_term_italics = 1
     colorscheme jellybeans
 " }
 
@@ -411,8 +415,80 @@ nnoremap <F5> :GundoToggle<CR>
     nnoremap K :YcmCompleter GetDoc<CR>
 " }
 
+" CtrlP {
+    " let g:ctrlp_user_command = {
+    "     \ 'types': {
+    "     \ 1: ['.git', 'cd %s && git ls-files -c -o -X .gitignore'],
+    "     \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    "     \ },
+    "     \ 'fallback': 'ag %s -i --nocolor --nogroup --hidden
+    "     \ --ignore out
+    "     \ --ignore .git
+    "     \ --ignore .svn
+    "     \ --ignore .hg
+    "     \ --ignore .DS_Store
+    "     \ --ignore "**/*.pyc"
+    "     \ -g ""'
+    "     \ }
+    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+    let g:ctrlp_use_caching = 0
+    let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+
+    " ctrlp only looks for this
+    let g:ctrlp_status_func = {
+            \ 'main': 'CtrlP_Statusline_1',
+            \ 'prog': 'CtrlP_Statusline_2',
+            \ }
+
+    " CtrlP_Statusline_1 and CtrlP_Statusline_2 both must return a full statusline
+    " and are accessible globally.
+
+    " Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
+    "            a:1    a:2      a:3       a:4  a:5   a:6  a:7
+    fu! CtrlP_Statusline_1(...)
+            let focus = '%#LineNr# '.a:1.' %*'
+            let byfname = '%#Character# '.a:2.' %*'
+            let regex = a:3 ? '%#LineNr# regex %*' : ''
+            " let prv = ' <'.a:4.'>='
+            let prv = ' ('.a:4.')'
+            let item = ' [%#Character# '.a:5.' %*]'
+            let nxt = ' <'.a:6.'>'
+            let marked = ' '.a:7.' '
+            let dir_ = ' %=%<%#LineNr# '.getcwd().' %*'
+            " Return the full statusline
+            retu focus.byfname.regex.prv.item.nxt.marked.dir_
+    endf
+
+    " Argument: len
+    "           a:1
+    fu! CtrlP_Statusline_2(...)
+            let len = '%#Function# '.a:1.' %*'
+            let dir = ' %=%<%#LineNr# '.getcwd().' %*'
+            " Return the full statusline
+            retu len.dir
+    endf
+" }
+
+" fzf {
+    " let $FZF_DEFAULT_COMMAND = 'git ls-files --cached --others'
+    " let g:fzf_action = {
+    "     \ 'ctrl-s': 'split',
+    "     \ 'ctrl-v': 'vsplit'
+    "     \ }
+    " let g:fzf_layout = { 'down': '~20%' }
+    " nnoremap <c-p> :FZF<cr>
+    " nnoremap <leader>b :Buffers<cr>
+    " nnoremap <leader>m :History<cr>
+    " augroup fzf
+    " autocmd!
+    " autocmd! FileType fzf
+    " autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    "     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    " augroup END
+" }
+
 " go {
-    let g:go_fmt_command = "goimports"
+    " let g:go_fmt_command = "goimports"
 " }
 
 " indent-guides {
