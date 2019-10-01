@@ -292,6 +292,12 @@ nnoremap <F5> :GundoToggle<CR>
 " nnoremap <silent> <c-p> :Unite -auto-resize file file_mru file_rec/async<cr>
 " }
 
+" ack.vim {
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+" }
+
 " python-vim {
     let python_highlight_all = 1
 " }
@@ -430,8 +436,11 @@ nnoremap <F5> :GundoToggle<CR>
     "     \ --ignore "**/*.pyc"
     "     \ -g ""'
     "     \ }
-    let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
-    let g:ctrlp_use_caching = 0
+    if executable('ag')
+        let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+        let g:ctrlp_use_caching = 0
+    endif
+
     let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 
     " ctrlp only looks for this
