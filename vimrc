@@ -11,17 +11,28 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
+Plug 'nkouevda/cpsm', { 'branch': 'fix-mem-leak', 'do': './install.sh' }
+Plug 'tacahiroy/ctrlp-funky'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
 " Plug 'maralla/validator.vim'
-Plug 'w0rp/ale'
-" python completion
+Plug 'dense-analysis/ale'
+"""" python completion
 Plug 'davidhalter/jedi-vim'
-" for asynch autocomplete
-Plug 'Shougo/vimproc.vim', {'do': 'make'}
-" cached completion
-Plug 'Shougo/neocomplete.vim'
+"""" for asynch autocomplete
+" Plug 'Shougo/vimproc.vim', {'do': 'make'}
+"""" cached completion
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -218,63 +229,94 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#auto_vim_configuration = 0
     let g:jedi#completions_enabled = 0
     let g:jedi#smart_auto_mappings = 0
-    let g:jedi#show_call_signatures = 2
-    " let g:jedi#completions_command = ""
-    " let g:jedi#popup_on_dot = 0
-    " let g:jedi#popup_select_first = 0
-    " let g:jedi#goto_assignments_command = ""
-    " let g:jedi#goto_definitions_command = ""
-    " let g:jedi#documentation_command = "K"
-    " let g:jedi#usages_command = "<leader>pu"
-    " let g:jedi#rename_command = "<leader>pr"
+    let g:jedi#show_call_signatures = 0
+    let g:jedi#use_tabs_not_buffers = 0
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#popup_select_first = 0
+    let g:jedi#auto_close_doc = 1
     " jedi mappings
+    " let g:jedi#completions_command = ''
+    " let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
+    " let g:jedi#goto_definitions_command = ''  " dynamically done for ft=python.
+    let g:jedi#documentation_command = "K"
+    let g:jedi#usages_command = "<leader>pu"
+    let g:jedi#rename_command = "<leader>pr"
     let g:jedi#rename_command = "<leader>m"
 " }
 
-" neocomplete {
-    let g:neocomplete#enable_at_startup = 1
-    " Use smartcase.
-    let g:neocomplete#enable_smart_case = 1
-    " async autocomplete
-    let g:neocomplete#use_vimproc = 1
-    " Set minimum syntax keyword length.
-    let g:neocomplete#sources#syntax#min_keyword_length = 3
-    let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-    " Define keyword
-    if !exists('g:neocomplete#keyword_patterns')
-        let g:neocomplete#keyword_patterns = {}
-    endif
-    let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-    " Plugin key-mappings.
-    inoremap <expr><C-g>     neocomplete#undo_completion()
-    inoremap <expr><C-l>     neocomplete#complete_common_string()
+" deoplete {
+    let g:deoplete#enable_at_startup = 1
+    call deoplete#custom#option({
+                \ 'smart_case': v:true,
+                \ })
+    inoremap <expr><C-g> deoplete#undo_completion()
+    inoremap <expr><C-l> deoplete#complete_common_string()
     " Recommended key-mappings.
     " <CR>: close popup and save indent.
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        return neocomplete#close_popup() . "\<CR>"
+        " return deoplete#close_popup() . "\<CR>"
         " For no inserting <CR> key.
-        "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+        return pumvisible() ? deoplete#close_popup() : "\<CR>"
     endfunction
     " <TAB>: completion.
-    inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <silent><expr> <TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    inoremap <silent><expr><S-TAB> pumvisible() ? "\<c-p>" : "\<S-TAB>"
     " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr><C-y>  neocomplete#close_popup()
-    inoremap <expr><C-e>  neocomplete#cancel_popup()
+    inoremap <expr><C-h> deoplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+    inoremap <expr><C-y> deoplete#close_popup()
+    inoremap <expr><C-e> deoplete#cancel_popup()
+    " deoplete-jedi
+    let g:deoplete#sources#jedi#enable_typeinfo = 0
+    let g:deoplete#sources#jedi#show_docstring = 1
+" }
+
+" neocomplete {
+    " let g:neocomplete#enable_at_startup = 1
+    " Use smartcase.
+    " let g:neocomplete#enable_smart_case = 1
+    " async autocomplete
+    " let g:neocomplete#use_vimproc = 1
+    " Set minimum syntax keyword length.
+    " let g:neocomplete#sources#syntax#min_keyword_length = 3
+    " let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+    " Define keyword
+    " if !exists('g:neocomplete#keyword_patterns')
+    "     let g:neocomplete#keyword_patterns = {}
+    " endif
+    " let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+    " Plugin key-mappings.
+    " inoremap <expr><C-g>     neocomplete#undo_completion()
+    " inoremap <expr><C-l>     neocomplete#complete_common_string()
+    " Recommended key-mappings.
+    " <CR>: close popup and save indent.
+    "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+    "function! s:my_cr_function()
+    "    return neocomplete#close_popup() . "\<CR>"
+    "    " For no inserting <CR> key.
+    "    "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+    "endfunction
+    " <TAB>: completion.
+    " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+    " <C-h>, <BS>: close popup and delete backword char.
+    " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+    " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+    " inoremap <expr><C-y>  neocomplete#close_popup()
+    " inoremap <expr><C-e>  neocomplete#cancel_popup()
     " use jedi for python
-    autocmd FileType python setlocal omnifunc=jedi#completions
-    if !exists('g:neocomplete#force_omni_input_patterns')
-        let g:neocomplete#force_omni_input_patterns = {}
-    endif
-    let g:neocomplete#force_omni_input_patterns.python =
-            \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+    " autocmd FileType python setlocal omnifunc=jedi#completions
+    " if !exists('g:neocomplete#force_omni_input_patterns')
+    "     let g:neocomplete#force_omni_input_patterns = {}
+    " endif
+    " let g:neocomplete#force_omni_input_patterns.python =
+    "         \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
     " alternative pattern: '\h\w*\|[^. \t]\.\w*'
-    if !exists('g:neocomplete#sources#omni#functions')
-        let g:neocomplete#sources#omni#functions = {}
-    endif
-    let g:neocomplete#sources#omni#functions.go = 'go#complete#Complete'
+    " if !exists('g:neocomplete#sources#omni#functions')
+    "     let g:neocomplete#sources#omni#functions = {}
+    " endif
+    " let g:neocomplete#sources#omni#functions.go = 'go#complete#Complete'
 " }
 
 " syntastic {
@@ -316,7 +358,9 @@ nnoremap <F5> :GundoToggle<CR>
     \       'autopep8',
     \   ],
     \}
-    let g:ale_python_flake8_options = '--max-line-length=120'
+    " let g:ale_python_flake8_executable = 'python -m flake8'
+    " let g:ale_python_pylint_executable = 'python -m pylint'
+    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E741,W504'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
     nmap <silent> ]; <Plug>(ale_next_wrap)
@@ -325,9 +369,87 @@ nnoremap <F5> :GundoToggle<CR>
 
 " ycm {
     " maps
-    " nnoremap <leader>g :YcmCompleter GoTo<CR>
-    " let g:ycm_goto_buffer_command = 'new-tab'
     " let g:ycm_autoclose_preview_window_after_completion = 1
+    " let g:ycm_collect_identifiers_from_comments_and_strings = 1
+    " let g:ycm_python_binary_path = '/usr/bin/python2.7'
+    " nnoremap <leader>g :YcmCompleter GoToDeclaration<CR>
+    " nnoremap <leader>d :YcmCompleter GoToDefinition<CR>
+    " nnoremap K :YcmCompleter GetDoc<CR>
+" }
+
+" CtrlP {
+    " let g:ctrlp_user_command = {
+    "     \ 'types': {
+    "     \ 1: ['.git', 'cd %s && git ls-files -c -o -X .gitignore'],
+    "     \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    "     \ },
+    "     \ 'fallback': 'ag %s -i --nocolor --nogroup --hidden
+    "     \ --ignore out
+    "     \ --ignore .git
+    "     \ --ignore .svn
+    "     \ --ignore .hg
+    "     \ --ignore .DS_Store
+    "     \ --ignore "**/*.pyc"
+    "     \ -g ""'
+    "     \ }
+    if executable('ag')
+        let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+        let g:ctrlp_use_caching = 0
+    endif
+
+    let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+
+    " ctrlp only looks for this
+    let g:ctrlp_status_func = {
+            \ 'main': 'CtrlP_Statusline_1',
+            \ 'prog': 'CtrlP_Statusline_2',
+            \ }
+
+    " CtrlP_Statusline_1 and CtrlP_Statusline_2 both must return a full statusline
+    " and are accessible globally.
+
+    " Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
+    "            a:1    a:2      a:3       a:4  a:5   a:6  a:7
+    fu! CtrlP_Statusline_1(...)
+            let focus = '%#LineNr# '.a:1.' %*'
+            let byfname = '%#Character# '.a:2.' %*'
+            let regex = a:3 ? '%#LineNr# regex %*' : ''
+            " let prv = ' <'.a:4.'>='
+            let prv = ' ('.a:4.')'
+            let item = ' [%#Character# '.a:5.' %*]'
+            let nxt = ' <'.a:6.'>'
+            let marked = ' '.a:7.' '
+            let dir_ = ' %=%<%#LineNr# '.getcwd().' %*'
+            " Return the full statusline
+            retu focus.byfname.regex.prv.item.nxt.marked.dir_
+    endf
+
+    " Argument: len
+    "           a:1
+    fu! CtrlP_Statusline_2(...)
+            let len = '%#Function# '.a:1.' %*'
+            let dir = ' %=%<%#LineNr# '.getcwd().' %*'
+            " Return the full statusline
+            retu len.dir
+    endf
+" }
+
+" fzf {
+    " let $FZF_DEFAULT_COMMAND = 'git ls-files --cached --others'
+    " let g:fzf_action = {
+    "     \ 'ctrl-s': 'split',
+    "     \ 'ctrl-v': 'vsplit'
+    "     \ }
+    " let g:fzf_layout = { 'down': '~20%' }
+    " nnoremap <c-p> :FZF<cr>
+    " nnoremap <leader>b :Buffers<cr>
+    " nnoremap <leader>m :History<cr>
+    " augroup fzf
+    " autocmd!
+    " autocmd! FileType fzf
+    " autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    "     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    " augroup END
 " }
 
 " go {
