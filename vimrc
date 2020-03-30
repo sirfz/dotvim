@@ -97,7 +97,7 @@ set noshowmode " don't show mode
 
 """ diff
 " set diffopt+=internal,vertical,algorithm:patience
-set diffopt+=vertical
+set diffopt+=vertical,algorithm:patience
 
 "au FileType python set omnifunc=pythoncomplete#Complete
 "let g:SuperTabDefaultCompletionType = "context"
