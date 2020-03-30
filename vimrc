@@ -7,8 +7,9 @@ call plug#begin('~/.vim/bundle')
 " Plug 'ajh17/spacegray.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'rbong/vim-crystalline'
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
@@ -40,10 +41,10 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/TaskList.vim'
-Plug 'vim-scripts/FastFold'
 Plug 'tmhedberg/SimpylFold'
-Plug 'fatih/vim-go', {'for': 'go'}
-Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'Konfekt/FastFold'
+" Plug 'fatih/vim-go', {'for': 'go'}
+" Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
 Plug 'Vimjas/vim-python-pep8-indent'
 
@@ -68,7 +69,7 @@ set linebreak " don't wrap textin the middle of a word
 set autoindent " always set autoindenting on
 " set smartindent " use smart indent if there is no indent file
 set cindent
-set tabstop=4 " <tab> inserts 4 spaces
+set tabstop=8 " <tab> inserts 8 spaces
 set shiftwidth=4 " but an indent level is 2 spaces wide.
 set softtabstop=4 " <BS> over an autoindent deletes both spaces.
 set expandtab " Use spaces, not tabs, for autoindent/tab key.
@@ -84,6 +85,7 @@ set showcmd " Show incomplete normal mode commands as I type.
 set report=0 " : commands always print changed line count.
 set shortmess+=a " Use [+]/[RO]/[w] for modified/readonly/written.
 set laststatus=2 " Always show statusline, even if only 1 window.
+set showtabline=2 " Always show tab/buffer even if only 1 window
 
 """ Searching and Patterns
 set ignorecase " Default to using case insensitive searches,
@@ -92,6 +94,10 @@ set hlsearch " Highlight searches by default.
 set incsearch " Incrementally search while typing a /regex
 
 set noshowmode " don't show mode
+
+""" diff
+" set diffopt+=internal,vertical,algorithm:patience
+set diffopt+=vertical
 
 "au FileType python set omnifunc=pythoncomplete#Complete
 "let g:SuperTabDefaultCompletionType = "context"
@@ -102,6 +108,9 @@ set mouse=a
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
 set ttymouse=xterm
+
+" escape timeout
+" set timeoutlen=1000 ttimeoutlen=0
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -142,9 +151,10 @@ endif
     " colorscheme base16-default-dark
     " colorscheme hybrid
     " colorscheme spacegray
-    let g:jellybeans_overrides = {
-        \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
-        \}
+    " let g:jellybeans_overrides = {
+    "     \    'background': { 'ctermbg': 'none', '256ctermbg': 'none' },
+    "     \}
+    " let g:jellybeans_use_term_italics = 1
     colorscheme jellybeans
 " }
 
@@ -159,19 +169,19 @@ set guifont=Hack\ 11
 
 " vim-airline {
     " vim-airline powerline symbols
-    let g:airline_powerline_fonts = 1
+    " let g:airline_powerline_fonts = 1
 
     " airline tabline
-    let g:airline#extensions#tabline#enabled = 1
+    " let g:airline#extensions#tabline#enabled = 1
 
     " display tab number
-    let g:airline#extensions#tabline#tab_nr_type = 1
+    " let g:airline#extensions#tabline#tab_nr_type = 1
 
     " bufferline
-    let g:airline#extensions#bufferline#enabled = 1
+    " let g:airline#extensions#bufferline#enabled = 1
 
     " display buffer number
-    let g:airline#extensions#tabline#buffer_nr_show = 1
+    " let g:airline#extensions#tabline#buffer_nr_show = 1
 
     " airline theme
     " let g:airline_theme = "base16_default"
@@ -179,6 +189,45 @@ set guifont=Hack\ 11
 
     " powerline statusline
     " set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
+" }
+
+" vim-crystalline {
+    function! StatusLine(current, width)
+        let l:s = ''
+
+        if a:current
+            let l:s .= crystalline#mode() . crystalline#right_mode_sep('')
+        else
+            let l:s .= '%#CrystallineInactive#'
+        endif
+        let l:s .= ' %f%h%w%m%r '
+        if a:current
+            let l:s .= crystalline#right_sep('', 'Fill') . ' %{fugitive#head()}'
+        endif
+
+        let l:s .= '%='
+        if a:current
+            let l:s .= crystalline#left_sep('', 'Fill') . ' %{&paste ?"PASTE ":""}%{&spell?"SPELL ":""}'
+        let l:s .= crystalline#left_mode_sep('')
+        endif
+        if a:width > 80
+            let l:s .= ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
+        else
+            let l:s .= ' '
+        endif
+
+        return l:s
+    endfunction
+
+    function! TabLine()
+        let l:vimlabel = has('nvim') ?  ' NVIM ' : ' VIM '
+        return crystalline#bufferline(2, len(l:vimlabel), 1) . '%=%#CrystallineTab# ' . l:vimlabel
+    endfunction
+
+    let g:crystalline_enable_sep = 1
+    let g:crystalline_statusline_fn = 'StatusLine'
+    let g:crystalline_tabline_fn = 'TabLine'
+    let g:crystalline_theme = 'jellybeans'
 " }
 
 " Gundo
@@ -221,6 +270,12 @@ nnoremap <F5> :GundoToggle<CR>
 " nnoremap <silent> <c-p> :Unite -auto-resize file file_mru file_rec/async<cr>
 " }
 
+" ack.vim {
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+" }
+
 " python-vim {
     let python_highlight_all = 1
 " }
@@ -255,9 +310,9 @@ nnoremap <F5> :GundoToggle<CR>
     " <CR>: close popup and save indent.
     inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
     function! s:my_cr_function()
-        " return deoplete#close_popup() . "\<CR>"
+        return deoplete#close_popup() . "\<CR>"
         " For no inserting <CR> key.
-        return pumvisible() ? deoplete#close_popup() : "\<CR>"
+        " return pumvisible() ? deoplete#close_popup() : "\<CR>"
     endfunction
     " <TAB>: completion.
     " inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -453,7 +508,7 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " go {
-    let g:go_fmt_command = "goimports"
+    " let g:go_fmt_command = "goimports"
 " }
 
 " indent-guides {
@@ -482,9 +537,6 @@ com! FormatJSON %!python -m json.tool
 
 " colorcolumn
 set cc=120
-
-" vertical diff
-set diffopt+=vertical
 
 " python folding
 " set foldmethod=indent
