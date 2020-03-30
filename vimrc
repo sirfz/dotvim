@@ -454,6 +454,11 @@ nnoremap <F5> :GundoToggle<CR>
 
     let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 
+    " funky
+    nnoremap <C-f> :CtrlPFunky<Cr>
+    " """ narrow funky search to word under cursor
+    " nnoremap <C-w> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
+
     " ctrlp only looks for this
     let g:ctrlp_status_func = {
             \ 'main': 'CtrlP_Statusline_1',
