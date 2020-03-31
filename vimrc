@@ -30,9 +30,13 @@ Plug 'davidhalter/jedi-vim'
 " Plug 'Shougo/neocomplete.vim'
 " Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
 " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'deoplete-plugins/deoplete-jedi'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'tpope/vim-commentary'
@@ -107,7 +111,9 @@ set mouse=a
 
 " Set this to the name of your terminal that supports mouse codes.
 " Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-set ttymouse=xterm
+if !has('nvim')
+    set ttymouse=xterm
+endif
 
 " escape timeout
 " set timeoutlen=1000 ttimeoutlen=0
