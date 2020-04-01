@@ -117,6 +117,14 @@ endif
 
 " escape timeout
 " set timeoutlen=1000 ttimeoutlen=0
+if !has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -295,6 +303,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#popup_on_dot = 0
     let g:jedi#popup_select_first = 0
     let g:jedi#auto_close_doc = 1
+    let g:jedi#force_py_version = 2
     " jedi mappings
     " let g:jedi#completions_command = ''
     " let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
