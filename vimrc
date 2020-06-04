@@ -116,15 +116,16 @@ if !has('nvim')
 endif
 
 " escape timeout
-" set timeoutlen=1000 ttimeoutlen=0
-if !has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
+set timeoutlen=1000 ttimeoutlen=0
+" if !has('gui_running')
+"     set ttimeoutlen=10
+"     augroup FastEscape
+"         autocmd!
+"         au InsertEnter * set timeoutlen=0
+"         au InsertLeave * set timeoutlen=1000
+"     augroup END
+" endif
+inoremap jj <ESC>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
