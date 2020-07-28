@@ -429,11 +429,15 @@ nnoremap <F5> :GundoToggle<CR>
     \       'autopep8',
     \   ],
     \}
-    " let g:ale_python_flake8_executable = 'python -m flake8'
-    " let g:ale_python_pylint_executable = 'python -m pylint'
-    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E741,W504'
+    let g:ale_python_flake8_executable = 'python2'
+    let g:ale_python_pylint_executable = 'python2'
+    let g:ale_python_flake8_options = '-m flake8 --max-line-length=120 --ignore=E741,W504'
+    let g:ale_python_pylint_options = '-m pylint'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %code: %%s [%severity%]'
     nmap <silent> ]; <Plug>(ale_next_wrap)
     nmap <silent> [; <Plug>(ale_previous_wrap)
 " }
@@ -579,3 +583,13 @@ inoremap <C-W> <C-O><C-W>
 
 " select pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" switch to Python 3
+fu! SwitchPy3()
+    let g:jedi#force_py_version = '3.8'
+    let g:ale_python_flake8_options = '-m flake8 --max-line-length=120 --ignore=E741,W504'
+    let g:ale_python_flake8_executable = 'python3.8'
+    let g:ale_python_pylint_executable = 'python3.8'
+    let g:ale_python_pylint_options = '-m pylint'
+    echo 'switch to Python 3.8'
+endf
