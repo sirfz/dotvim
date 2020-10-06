@@ -11,12 +11,13 @@ Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'rbong/vim-crystalline'
 Plug 'mileszs/ack.vim'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 " Plug 'nixprime/cpsm', { 'do': 'env PY3=OFF ./install.sh' }
-Plug 'nkouevda/cpsm', { 'branch': 'fix-mem-leak', 'do': './install.sh' }
-Plug 'tacahiroy/ctrlp-funky'
+" Plug 'nkouevda/cpsm', { 'branch': 'fix-mem-leak', 'do': './install.sh' }
+" Plug 'tacahiroy/ctrlp-funky'
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 Plug 'sjl/gundo.vim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'scrooloose/syntastic'
@@ -467,51 +468,51 @@ nnoremap <F5> :GundoToggle<CR>
     "     \ --ignore "**/*.pyc"
     "     \ -g ""'
     "     \ }
-    if executable('ag')
-        let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
-        let g:ctrlp_use_caching = 0
-    endif
+    " if executable('ag')
+    "     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
+    "     let g:ctrlp_use_caching = 0
+    " endif
 
-    let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
+    " let g:ctrlp_match_func = { 'match': 'cpsm#CtrlPMatch' }
 
     " funky
-    nnoremap <C-f> :CtrlPFunky<Cr>
+    " nnoremap <C-f> :CtrlPFunky<Cr>
     " """ narrow funky search to word under cursor
     " nnoremap <C-w> :execute 'CtrlPFunky ' . expand('<cword>')<Cr>
 
     " ctrlp only looks for this
-    let g:ctrlp_status_func = {
-            \ 'main': 'CtrlP_Statusline_1',
-            \ 'prog': 'CtrlP_Statusline_2',
-            \ }
+    " let g:ctrlp_status_func = {
+    "         \ 'main': 'CtrlP_Statusline_1',
+    "         \ 'prog': 'CtrlP_Statusline_2',
+    "         \ }
 
     " CtrlP_Statusline_1 and CtrlP_Statusline_2 both must return a full statusline
     " and are accessible globally.
 
     " Arguments: focus, byfname, s:regexp, prv, item, nxt, marked
     "            a:1    a:2      a:3       a:4  a:5   a:6  a:7
-    fu! CtrlP_Statusline_1(...)
-            let focus = '%#LineNr# '.a:1.' %*'
-            let byfname = '%#Character# '.a:2.' %*'
-            let regex = a:3 ? '%#LineNr# regex %*' : ''
-            " let prv = ' <'.a:4.'>='
-            let prv = ' ('.a:4.')'
-            let item = ' [%#Character# '.a:5.' %*]'
-            let nxt = ' <'.a:6.'>'
-            let marked = ' '.a:7.' '
-            let dir_ = ' %=%<%#LineNr# '.getcwd().' %*'
-            " Return the full statusline
-            retu focus.byfname.regex.prv.item.nxt.marked.dir_
-    endf
+    " fu! CtrlP_Statusline_1(...)
+    "         let focus = '%#LineNr# '.a:1.' %*'
+    "         let byfname = '%#Character# '.a:2.' %*'
+    "         let regex = a:3 ? '%#LineNr# regex %*' : ''
+    "         " let prv = ' <'.a:4.'>='
+    "         let prv = ' ('.a:4.')'
+    "         let item = ' [%#Character# '.a:5.' %*]'
+    "         let nxt = ' <'.a:6.'>'
+    "         let marked = ' '.a:7.' '
+    "         let dir_ = ' %=%<%#LineNr# '.getcwd().' %*'
+    "         " Return the full statusline
+    "         retu focus.byfname.regex.prv.item.nxt.marked.dir_
+    " endf
 
     " Argument: len
     "           a:1
-    fu! CtrlP_Statusline_2(...)
-            let len = '%#Function# '.a:1.' %*'
-            let dir = ' %=%<%#LineNr# '.getcwd().' %*'
-            " Return the full statusline
-            retu len.dir
-    endf
+    " fu! CtrlP_Statusline_2(...)
+    "         let len = '%#Function# '.a:1.' %*'
+    "         let dir = ' %=%<%#LineNr# '.getcwd().' %*'
+    "         " Return the full statusline
+    "         retu len.dir
+    " endf
 " }
 
 " fzf {
@@ -530,6 +531,42 @@ nnoremap <F5> :GundoToggle<CR>
     " autocmd  FileType fzf set laststatus=0 noshowmode noruler
     "     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
     " augroup END
+" }
+
+" LeadF {
+    " don't show the help in normal mode
+    let g:Lf_HideHelp = 1
+    let g:Lf_UseCache = 0
+    let g:Lf_UseVersionControlTool = 0
+    let g:Lf_IgnoreCurrentBufferName = 1
+
+    " popup mode
+    let g:Lf_WindowPosition = 'popup'
+    let g:Lf_PreviewInPopup = 1
+    let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+    let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+    let g:Lf_ShortcutF = "<leader>ff"
+    noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+    noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+    noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+    noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+    noremap <C-B> :<C-U><C-R>=printf("Leaderf! rg --current-buffer -e %s ", expand("<cword>"))<CR>
+    noremap <C-F> :<C-U><C-R>=printf("Leaderf! rg -e %s ", expand("<cword>"))<CR>
+
+    " search visually selected text literally
+    xnoremap gf :<C-U><C-R>=printf("Leaderf! rg -F -e %s ", leaderf#Rg#visual())<CR>
+    noremap go :<C-U>Leaderf! rg --recall<CR>
+
+    " should use `Leaderf gtags --update` first
+    let g:Lf_GtagsAutoGenerate = 0
+    let g:Lf_Gtagslabel = 'native-pygments'
+    noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+    noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+    noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+    noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+    noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
 " }
 
 " go {
