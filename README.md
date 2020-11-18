@@ -1,9 +1,10 @@
 ### Requirements:
 
-* vim8 built with Python 3.6+
-* [fd](https://github.com/sharkdp/fd) for CtrlP search
+* vim8/neovim with Python 3.6+ support
 * `pip3 install --user pynvim` (for deoplete.nvim)
-* `sudo pip install flake8 pylint` (for ale Python linting)
+* `pip3 install --user jedi` (for deoplete-jedi)
+* `pip3 install --user flake8 pylint` (for ale Python linting)
+* ~~[fd](https://github.com/sharkdp/fd) for CtrlP search~~ (switched LeaderF)
 
 ### Installation:
 
