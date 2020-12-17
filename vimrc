@@ -6,7 +6,8 @@ call plug#begin('~/.vim/bundle')
 " Plug 'w0ng/vim-hybrid'
 " Plug 'ajh17/spacegray.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'dim13/smyck.vim'
+" Plug 'dracula/vim', { 'as': 'dracula' }
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'rbong/vim-crystalline'
@@ -25,12 +26,6 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 """" python completion
 Plug 'davidhalter/jedi-vim'
-"""" for asynch autocomplete
-" Plug 'Shougo/vimproc.vim', {'do': 'make'}
-"""" cached completion
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
-" Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -45,6 +40,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'chrisbra/csv.vim'
 Plug 'vim-scripts/TaskList.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'Konfekt/FastFold'
@@ -52,6 +48,7 @@ Plug 'Konfekt/FastFold'
 " Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'valloric/MatchTagAlways'
 Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'Yggdroot/indentLine'
 
 " Required:
 call plug#end()
@@ -172,6 +169,7 @@ endif
     "     \}
     " let g:jellybeans_use_term_italics = 1
     colorscheme jellybeans
+    " colorscheme smyck
 " }
 
 set guifont=Hack\ 11
@@ -305,7 +303,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#popup_on_dot = 0
     let g:jedi#popup_select_first = 0
     let g:jedi#auto_close_doc = 1
-    let g:jedi#force_py_version = 2
+    let g:jedi#force_py_version = '3'
     " jedi mappings
     " let g:jedi#completions_command = ''
     " let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
@@ -430,8 +428,8 @@ nnoremap <F5> :GundoToggle<CR>
     \       'autopep8',
     \   ],
     \}
-    let g:ale_python_flake8_executable = 'python2'
-    let g:ale_python_pylint_executable = 'python2'
+    let g:ale_python_flake8_executable = 'python3'
+    let g:ale_python_pylint_executable = 'python3'
     let g:ale_python_flake8_options = '-m flake8 --max-line-length=120 --ignore=E741,W504'
     let g:ale_python_pylint_options = '-m pylint'
     let g:ale_sign_error = '✗'
@@ -468,7 +466,7 @@ nnoremap <F5> :GundoToggle<CR>
     "     \ --ignore "**/*.pyc"
     "     \ -g ""'
     "     \ }
-    " if executable('ag')
+    " if executable('fd')
     "     let g:ctrlp_user_command = 'fd --type f --color=never "" %s'
     "     let g:ctrlp_use_caching = 0
     " endif
@@ -533,17 +531,24 @@ nnoremap <F5> :GundoToggle<CR>
     " augroup END
 " }
 
-" LeadF {
+" LeaderF {
     " don't show the help in normal mode
     let g:Lf_HideHelp = 1
     let g:Lf_UseCache = 0
     let g:Lf_UseVersionControlTool = 0
     let g:Lf_IgnoreCurrentBufferName = 1
+    let g:Lf_EmptyQuery = 1
+    let g:Lf_ShowDevIcons = 0
+    " let g:Lf_ExternalCommand = 'find "%s" -type f'
+    " if executable('fd')
+    "     let g:Lf_ExternalCommand = 'fd --type f --color=never "" %s'
+    " endif
+    let g:Lf_WorkingDirectoryMode = 'Ac'
 
     " popup mode
     let g:Lf_WindowPosition = 'popup'
     let g:Lf_PreviewInPopup = 1
-    let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "DejaVu Sans Mono for Powerline" }
+    let g:Lf_StlSeparator = { 'left': "\ue0b0", 'right': "\ue0b2", 'font': "" }
     let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
 
     let g:Lf_ShortcutF = "<leader>ff"
@@ -574,8 +579,8 @@ nnoremap <F5> :GundoToggle<CR>
 " }
 
 " indent-guides {
-    let g:indent_guides_start_level=2
-    let g:indent_guides_guide_size=1
+    let g:indent_guides_start_level = 1
+    let g:indent_guides_guide_size = 1
 " }
 
 " SimpylFold {
@@ -621,12 +626,12 @@ inoremap <C-W> <C-O><C-W>
 " select pasted text
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" switch to Python 3
-fu! SwitchPy3()
-    let g:jedi#force_py_version = '3.8'
-    let g:ale_python_flake8_options = '-m flake8 --max-line-length=120 --ignore=E741,W504'
-    let g:ale_python_flake8_executable = 'python3.8'
-    let g:ale_python_pylint_executable = 'python3.8'
-    let g:ale_python_pylint_options = '-m pylint'
-    echo 'switch to Python 3.8'
+" switch to Python 2
+fu! SwitchPy2()
+    let g:jedi#force_py_version = 2
+    let g:ale_python_flake8_executable = 'python2'
+    let g:ale_python_pylint_executable = 'python2'
+    ALEDisable
+    ALEEnable
+    echo 'Switched to Python 2'
 endf
