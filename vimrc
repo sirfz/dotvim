@@ -303,7 +303,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:jedi#popup_on_dot = 0
     let g:jedi#popup_select_first = 0
     let g:jedi#auto_close_doc = 1
-    let g:jedi#force_py_version = '3'
+    let g:jedi#force_py_version = 3
     " jedi mappings
     " let g:jedi#completions_command = ''
     " let g:jedi#goto_assignments_command = ''  " dynamically done for ft=python.
@@ -431,7 +431,7 @@ nnoremap <F5> :GundoToggle<CR>
     let g:ale_python_flake8_executable = 'python3'
     let g:ale_python_pylint_executable = 'python3'
     let g:ale_python_flake8_options = '-m flake8 --max-line-length=120 --ignore=E741,W504'
-    let g:ale_python_pylint_options = '-m pylint'
+    let g:ale_python_pylint_options = '-m pylint -j 8'
     let g:ale_sign_error = '✗'
     let g:ale_sign_warning = '!'
     let g:ale_echo_msg_error_str = 'E'
@@ -634,4 +634,14 @@ fu! SwitchPy2()
     ALEDisable
     ALEEnable
     echo 'Switched to Python 2'
+endf
+
+" switch to Python 3
+fu! SwitchPy3()
+    let g:jedi#force_py_version = 3
+    let g:ale_python_flake8_executable = 'python3'
+    let g:ale_python_pylint_executable = 'python3'
+    ALEDisable
+    ALEEnable
+    echo 'Switched to Python 3'
 endf
