@@ -91,10 +91,8 @@ return packer.startup(function(use)
 	use { "nvim-telescope/telescope-frecency.nvim", requires = { "kkharji/sqlite.lua" } }
 
     -- Treesitter
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        commit = "8e763332b7bf7b3a426fd8707b7f5aa85823a5ac",
-    }
+    use { "nvim-treesitter/nvim-treesitter" }
+    use { "nvim-treesitter/nvim-treesitter-context" }
 
     -- Git
     use { "lewis6991/gitsigns.nvim" }
