@@ -50,7 +50,7 @@ lualine.setup {
   sections = {
     lualine_a = { { 'mode', fmt = function(mode) return vim.go.paste == true and mode .. ' (paste)' or mode end } },
     lualine_b = {"branch"},
-    lualine_c = { diagnostics, { 'filename', path = 1 } },
+    lualine_c = { diagnostics, { 'filename', path = 2 } },
     lualine_x = { diff, spaces, "encoding", filetype },
     lualine_y = { location },
     lualine_z = { "progress" },

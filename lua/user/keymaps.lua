@@ -28,15 +28,20 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
-
 -- buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
-keymap("n", "]mb", ":BufferLineMoveNext<CR>", opts)
-keymap("n", "[mb", ":BufferLineMovePrev<CR>", opts)
-keymap("n", "]b", ":BufferLineCycleNext<CR>", opts)
-keymap("n", "[b", ":BufferLineCyclePrev<CR>", opts)
+-- keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+-- bufferline
+-- keymap("n", "]mb", ":BufferLineMoveNext<CR>", opts)
+-- keymap("n", "[mb", ":BufferLineMovePrev<CR>", opts)
+-- keymap("n", "]b", ":BufferLineCycleNext<CR>", opts)
+-- keymap("n", "[b", ":BufferLineCyclePrev<CR>", opts)
+-- barbar
+keymap("n", "]mb", ":BufferMoveNext<CR>", opts)
+keymap("n", "[mb", ":BufferMovePrevious<CR>", opts)
+keymap("n", "]b", ":BufferNext<CR>", opts)
+keymap("n", "[b", ":BufferPrevious<CR>", opts)
+keymap("n", "<S-q>", ":BufferClose<CR>", opts)
+keymap("n", "<C-p>", ":BufferPick<CR>", opts)
 
 -- Better paste
 keymap("v", "p", '"_dP', opts)
@@ -58,16 +63,13 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>fm", ":lua require('telescope').extensions.frecency.frecency()<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+-- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle.linewise(vim.fn.visualmode())<CR>')
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
@@ -79,3 +81,11 @@ keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
 keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
 keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+
+-- quickfix/trouble
+keymap("n", "<leader>oq", ":Trouble quickfix<CR>", opts)
+keymap("n", "<leader>cc", ":TroubleClose<CR>", opts)
+
+-- fold
+-- keymap('n', 'zR', require('ufo').openAllFolds, opts)
+-- keymap('n', 'zM', require('ufo').closeAllFolds, opts)

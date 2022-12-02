@@ -10,18 +10,20 @@ local diagnostics = null_ls.builtins.diagnostics
 
 -- https://github.com/prettier-solidity/prettier-plugin-solidity
 null_ls.setup {
-  debug = false,
-  sources = {
-    formatting.prettier.with {
-      extra_filetypes = { "toml" },
-      extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+    debug = false,
+    sources = {
+        formatting.prettier.with {
+            filetypes = { "json", "toml" },
+            extra_filetypes = { "toml" },
+            extra_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
+        },
+        formatting.black.with { extra_args = { "--fast" } },
+        formatting.stylua,
+        formatting.google_java_format,
+        formatting.taplo,
+        -- diagnostics.flake8,
+        diagnostics.ruff.with { extra_args = { "--line-length=120", "--ignore=E741" } },
+        diagnostics.pylint.with { extra_args = { "-j 8", "--load-plugins=perflint" } },
     },
-    formatting.black.with { extra_args = { "--fast" } },
-    formatting.stylua,
-    formatting.google_java_format,
-    -- diagnostics.flake8,
-    diagnostics.ruff.with { extra_args = { "--line-length=120", "--ignore=E741" } },
-    diagnostics.pylint.with { extra_args = { "-j 8", "--load-plugins=perflint" } },
-  },
-  diagnostics_format = "[#{c}] #{m}",
+    diagnostics_format = "[#{c}] #{m}",
 }

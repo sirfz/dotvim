@@ -51,8 +51,9 @@ return packer.startup(function(use)
     use { "JoosepAlviste/nvim-ts-context-commentstring" }
     use { "kyazdani42/nvim-web-devicons" }
     use { "kyazdani42/nvim-tree.lua" }
-    use { "akinsho/bufferline.nvim" }
-    use { "moll/vim-bbye" }
+    -- use { "akinsho/bufferline.nvim" }
+    use {'romgrk/barbar.nvim', wants = 'nvim-web-devicons'}
+    -- use { "moll/vim-bbye" }
     use { "nvim-lualine/lualine.nvim" }
     use { "akinsho/toggleterm.nvim" }
     use { "ahmedkhalf/project.nvim" }
@@ -64,6 +65,7 @@ return packer.startup(function(use)
     use { "adisen99/jellybeans-nvim", requires = "rktjmp/lush.nvim" }
     use { "navarasu/onedark.nvim" }
     use { "Mofiqul/adwaita.nvim" }
+    use { "EdenEast/nightfox.nvim" }
 
     -- cmp plugins
     use { "hrsh7th/nvim-cmp" } -- The completion plugin
@@ -86,12 +88,23 @@ return packer.startup(function(use)
     use { "RRethy/vim-illuminate" }
 
     -- Telescope
-    use { "nvim-telescope/telescope.nvim" }
+    use {
+        "nvim-telescope/telescope.nvim",
+        requires = {
+            { "nvim-telescope/telescope-live-grep-args.nvim" },
+        },
+    }
     use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
 	use { "nvim-telescope/telescope-frecency.nvim", requires = { "kkharji/sqlite.lua" } }
 
     -- Treesitter
-    use { "nvim-treesitter/nvim-treesitter" }
+    use {
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+            ts_update()
+        end,
+    }
     use { "nvim-treesitter/nvim-treesitter-context" }
 
     -- Git
@@ -104,6 +117,19 @@ return packer.startup(function(use)
 
     -- Misc
     use { "tpope/vim-unimpaired" }
+    use { "folke/trouble.nvim" }
+    use {
+        "kylechui/nvim-surround",
+        tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    }
+    -- use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
+    use { "tmhedberg/SimpylFold" }
+    use { "Konfekt/FastFold" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

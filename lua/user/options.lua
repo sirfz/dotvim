@@ -42,3 +42,9 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters
 vim.opt.linebreak = true                        -- don't wrap textin the middle of a word
 vim.opt.textwidth = 120                         -- Lines are automatically wrapped after 120 columns 
 vim.opt.colorcolumn = "+1"                      -- draw colorcolumn after textwidth
+vim.opt.diffopt:append("vertical", "algorithm:patience")
+-- folds
+-- vim.o.foldcolumn = "1" -- '0' is not bad
+-- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+-- vim.o.foldlevelstart = 99
+-- vim.o.foldenable = true
