@@ -66,6 +66,10 @@ return packer.startup(function(use)
     use { "navarasu/onedark.nvim" }
     use { "Mofiqul/adwaita.nvim" }
     use { "EdenEast/nightfox.nvim" }
+    use { "LunarVim/darkplus.nvim" }
+    use { "Shatur/neovim-ayu" }
+    use { "VDuchauffour/neodark.nvim" }
+    use { "tomasiser/vim-code-dark" }
 
     -- cmp plugins
     use { "hrsh7th/nvim-cmp" } -- The completion plugin
