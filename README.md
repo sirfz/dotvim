@@ -24,20 +24,22 @@ vim +PackerSync
 recommended config:
 
 ```
-unbind C-b
-set -g prefix C-a
-# disable statusline
-set -g status off
-# binds
-bind-key C-a last-window  # screen behavior
-bind-key Space next-window
-bind-key Backspace previous-window
+# nvim recommended
+set -g default-terminal "tmux-256color"
+set -ag terminal-overrides ",xterm-256color:RGB"
+set -sg escape-time 10
+# ctrl+arrows enabled (not needed?)
+set-window-option -g xterm-keys on
 # vi key bindings
 set-window-option -g mode-keys vi
-set-option -g default-terminal "screen-256color"
-set-option -sa terminal-overrides ',xterm-256color:RGB'
-set-option -sg escape-time 10
-set-window-option -g xterm-keys on
+# disable statusline
+set -g status off
+# binds (screen-like)
+unbind C-b
+set -g prefix C-a
+bind-key C-a last-window  # screen behavior
+bind-key Space next-window
+bind-key BSpace previous-window
 ```
 
 ### pylint
@@ -45,6 +47,8 @@ set-window-option -g xterm-keys on
 ~/.pylintrc:
 
 ```
+extension-pkg-allow-list=orjson
+
 disable=raw-checker-failed,
         bad-inline-option,
         locally-disabled,
@@ -64,5 +68,11 @@ disable=raw-checker-failed,
         undefined-variable,
         too-many-locals,
         too-many-branches,
-        too-many-statements
+        too-many-statements,
+        unused-import,
+        ungrouped-imports,
+        missing-class-docstring,
+        too-few-public-methods,
+        too-many-instance-attributes,
+        unused-variable,
 ```
