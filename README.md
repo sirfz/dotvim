@@ -4,8 +4,18 @@
 * git (not too old, for Packer)
 * `pip3 install --user ruff pylint perflint black` (for null-ls Python linting/formatting)
 * ripgrep and fd for Telescope
+    ```
+    sudo apt install ripgrep fd-find
+    ```
 * node (for Mason to isntall language servers)
+    ```
+    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+    sudo apt-get install -y nodejs
+    ```
 * sqlite3-dev (for Telescope-frecency)
+    ```
+    sudo apt install libsqlite3-dev
+    ```
 
 ### Installation:
 
