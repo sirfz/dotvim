@@ -63,13 +63,9 @@ return packer.startup(function(use)
 
     -- Colorschemes
     use { "adisen99/jellybeans-nvim", requires = "rktjmp/lush.nvim" }
-    use { "navarasu/onedark.nvim" }
-    use { "Mofiqul/adwaita.nvim" }
     use { "EdenEast/nightfox.nvim" }
-    use { "LunarVim/darkplus.nvim" }
-    use { "Shatur/neovim-ayu" }
-    use { "VDuchauffour/neodark.nvim" }
     use { "tomasiser/vim-code-dark" }
+    use { "marko-cerovac/material.nvim" }
 
     -- cmp plugins
     use { "hrsh7th/nvim-cmp" } -- The completion plugin
