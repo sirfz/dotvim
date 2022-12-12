@@ -69,9 +69,14 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 -- remember cursor position
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     callback = function()
-        vim.cmd([[
-            if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-        ]])
+        vim.cmd([[ if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif ]])
+    end,
+})
+
+-- close vim if last window is quickfix
+vim.api.nvim_create_autocmd({ "WinEnter" }, {
+    callback = function()
+        vim.cmd([[ if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix" | q | endif ]])
     end,
 })
 

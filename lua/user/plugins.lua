@@ -110,7 +110,7 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter-context" }
 
     -- Git
-    use { "lewis6991/gitsigns.nvim" }
+    use { "lewis6991/gitsigns.nvim", tag = "release" }
 
     -- DAP
     use { "mfussenegger/nvim-dap" }
@@ -132,6 +132,15 @@ return packer.startup(function(use)
     -- use { "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }
     use { "tmhedberg/SimpylFold" }
     use { "Konfekt/FastFold" }
+    use { "folke/which-key.nvim",
+        config = function()
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
