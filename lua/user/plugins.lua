@@ -66,6 +66,8 @@ return packer.startup(function(use)
     use { "EdenEast/nightfox.nvim" }
     use { "tomasiser/vim-code-dark" }
     use { "marko-cerovac/material.nvim" }
+    -- syntax
+    use { "sheerun/vim-polyglot" }
 
     -- cmp plugins
     use { "hrsh7th/nvim-cmp" } -- The completion plugin
