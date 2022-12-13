@@ -66,6 +66,7 @@ return packer.startup(function(use)
     use { "EdenEast/nightfox.nvim" }
     use { "tomasiser/vim-code-dark" }
     use { "marko-cerovac/material.nvim" }
+
     -- syntax
     use { "sheerun/vim-polyglot" }
 
@@ -119,6 +120,7 @@ return packer.startup(function(use)
 
     -- Misc
     use { "tpope/vim-unimpaired" }
+    use { "tpope/vim-repeat" }
     use { "folke/trouble.nvim" }
     use {
         "kylechui/nvim-surround",
@@ -141,6 +143,7 @@ return packer.startup(function(use)
             }
         end
     }
+    use { "cbochs/portal.nvim" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

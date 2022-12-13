@@ -62,11 +62,13 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fm", ":lua require('telescope').extensions.frecency.frecency()<CR>", opts)
+keymap("n", "<leader>fm", require("telescope").extensions.frecency.frecency, opts)
 -- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
+keymap("n", "<leader>ft", require("telescope").extensions.live_grep_args.live_grep_args, opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
+keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -89,3 +91,7 @@ keymap("n", "<leader>cc", ":TroubleClose<CR>", opts)
 -- fold
 -- keymap('n', 'zR', require('ufo').openAllFolds, opts)
 -- keymap('n', 'zM', require('ufo').closeAllFolds, opts)
+
+-- portal
+keymap("n", "<leader>o", require("portal").jump_backward, opts)
+keymap("n", "<leader>i", require("portal").jump_forward, opts)
