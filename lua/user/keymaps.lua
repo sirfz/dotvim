@@ -40,6 +40,8 @@ keymap("n", "]mb", ":BufferMoveNext<CR>", opts)
 keymap("n", "[mb", ":BufferMovePrevious<CR>", opts)
 keymap("n", "]b", ":BufferNext<CR>", opts)
 keymap("n", "[b", ":BufferPrevious<CR>", opts)
+keymap("n", "]B", ":BufferLast<CR>", opts)
+keymap("n", "[B", ":BufferFirst<CR>", opts)
 keymap("n", "<S-q>", ":BufferClose<CR>", opts)
 keymap("n", "<C-p>", ":BufferPick<CR>", opts)
 
@@ -62,7 +64,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fm", require('telescope').extensions.frecency.frecency, opts)
+keymap("n", "<leader>fm", require("telescope").extensions.frecency.frecency, opts)
 -- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>ft", require("telescope").extensions.live_grep_args.live_grep_args, opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
