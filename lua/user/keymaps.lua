@@ -62,7 +62,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fm", require("telescope").extensions.frecency.frecency, opts)
+keymap("n", "<leader>fm", require('telescope').extensions.frecency.frecency, opts)
 -- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>ft", require("telescope").extensions.live_grep_args.live_grep_args, opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)

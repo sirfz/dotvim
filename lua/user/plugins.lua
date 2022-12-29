@@ -66,6 +66,13 @@ return packer.startup(function(use)
     use { "EdenEast/nightfox.nvim" }
     use { "tomasiser/vim-code-dark" }
     use { "marko-cerovac/material.nvim" }
+    use { "nyoom-engineering/oxocarbon.nvim" }
+    use {
+        'loganswartz/selenized.nvim',
+        requires = {
+            'rktjmp/lush.nvim',
+        },
+    }
 
     -- syntax
     use { "sheerun/vim-polyglot" }
@@ -111,7 +118,8 @@ return packer.startup(function(use)
     use { "nvim-treesitter/nvim-treesitter-context" }
 
     -- Git
-    use { "lewis6991/gitsigns.nvim", tag = "release" }
+    use { "tpope/vim-fugitive" }
+    use { "lewis6991/gitsigns.nvim" }
 
     -- DAP
     use { "mfussenegger/nvim-dap" }
