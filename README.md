@@ -38,13 +38,14 @@ recommended config:
 set -g default-terminal "tmux-256color"
 set -ag terminal-overrides ",xterm-256color:RGB"
 set -sg escape-time 10
+set -g focus-events on
 # ctrl+arrows enabled (not needed?)
 set-window-option -g xterm-keys on
 # vi key bindings
 set-window-option -g mode-keys vi
 # disable statusline
 set -g status off
-# binds (screen-like)
+# binds (closer to gnu screen)
 unbind C-b
 set -g prefix C-a
 bind-key C-a last-window  # screen behavior
@@ -85,4 +86,5 @@ disable=raw-checker-failed,
         too-few-public-methods,
         too-many-instance-attributes,
         unused-variable,
+        attribute-defined-outside-init,
 ```
