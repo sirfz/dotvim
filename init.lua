@@ -1,3 +1,7 @@
+vim.g.mapleader = "\\"
+vim.g.maplocalleader = "\\"
+require("config.lazy")
+
 require "user.impatient"
 require "user.options"
 require "user.plugins"
