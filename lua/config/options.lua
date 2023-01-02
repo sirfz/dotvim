@@ -65,3 +65,9 @@ vim.opt.fillchars.eob=" "                       -- show empty lines at the end o
 -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
 -- vim.o.foldlevelstart = 99
 -- vim.o.foldenable = true
+
+if vim.fn.executable("jq") == 1 then
+  vim.api.nvim_create_user_command("FormatJSON", ":%!jq --indent 4 -M .", {})
+else
+  vim.api.nvim_create_user_command("FormatJSON", ":%!python -m json.tool", {})
+end
