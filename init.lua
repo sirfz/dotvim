@@ -1,30 +1,14 @@
 vim.g.mapleader = "\\"
 vim.g.maplocalleader = "\\"
+require("config.options")
 require("config.lazy")
 
-require "user.impatient"
-require "user.options"
-require "user.plugins"
-require "user.keymaps"
-require "user.autocommands"
-require "user.colorscheme"
-require "user.cmp"
-require "user.telescope"
-require "user.gitsigns"
-require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
-require "user.nvim-tree"
--- require "user.bufferline"
-require "user.barbar"
-require "user.lualine"
-require "user.toggleterm"
-require "user.project"
-require "user.illuminate"
-require "user.indentline"
-require "user.alpha"
-require "user.lsp"
-require "user.dap"
-require "user.trouble"
--- require "user.ufo"
-require "user.fold"
+-- vim.api.nvim_create_autocmd("User", {
+--   pattern = "VeryLazy",
+--   callback = function()
+--     require("config.autocmds")
+--     require("config.keymaps")
+--   end,
+-- })
+require("config.autocmds")
+require("config.keymaps")
