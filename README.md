@@ -7,7 +7,7 @@
     ```
     sudo apt install ripgrep fd-find
     ```
-* node (for Mason to isntall language servers)
+* node (for Mason to install language servers/tools)
     ```
     curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
     sudo apt-get install -y nodejs
@@ -23,10 +23,10 @@
 git clone https://github.com/sirfz/dotvim.git ~/.config/nvim
 ```
 
-To install all plugins, run (using vim-plug):
+To install all plugins, just run neovim (lazy.nvim will automatically install all plugins):
 
 ```sh
-vim +PackerSync
+vim
 ```
 
 ### Tmux
