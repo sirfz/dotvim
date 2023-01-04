@@ -1,6 +1,9 @@
 local M = {
-    "goolord/alpha-nvim",
-    event = "VimEnter",
+  "goolord/alpha-nvim",
+  event = "VimEnter",
+  cond = function()
+    return vim.api.nvim_buf_get_name(0) == ""
+  end,
 }
 
 function M.config()
