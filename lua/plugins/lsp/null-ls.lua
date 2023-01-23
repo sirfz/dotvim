@@ -22,7 +22,7 @@ function M.setup()
             formatting.taplo,
             -- diagnostics.flake8,
             diagnostics.ruff.with { extra_args = { "--line-length=120", "--ignore=E741" } },
-            diagnostics.pylint.with { extra_args = { "-j 8", "--load-plugins=perflint" } },
+            -- diagnostics.pylint.with { extra_args = { "-j 8", "--load-plugins=perflint" } },
         },
         diagnostics_format = "[#{c}] #{m}",
     }

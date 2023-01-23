@@ -32,7 +32,7 @@ function M.config()
         search = false,
       },
       modules = {             -- List of various plugins and additional options
-        barbar = false,
+        barbar = true,
       },
     },
     palettes = {
@@ -41,7 +41,27 @@ function M.config()
       }
     },
     specs = {},
-    groups = {},
+    groups = {
+      carbonfox = {
+        BufferCurrent        = { bg = "bg3", fg = "fg1", style = "bold" },  -- fg3, fg1
+        BufferCurrentIndex   = { bg = "bg3", fg = "diag.info" },
+        BufferCurrentMod     = { bg = "bg3", fg = "diag.info", style = "bold" },
+        BufferCurrentSign    = { bg = "bg3", fg = "diag.info" },
+        BufferCurrentTarget  = { bg = "bg3", fg = "palette.green" },
+        -- BufferVisible        = { bg = "bg2", fg = "palette.comment", style = "italic" },
+        -- BufferVisibleIndex   = { bg = "bg2", fg = "palette.magenta" },
+        -- BufferVisibleMod     = { bg = "bg2", fg = "palette.magenta", style = "italic" },
+        -- BufferVisibleSign    = { bg = "bg2", fg = "palette.magenta" },
+        -- BufferVisibleTarget  = { bg = "bg2", fg = "diag.error" },
+        -- BufferInactive       = { bg = spec.bg0, fg = syn.comment },
+        -- BufferInactiveIndex  = { bg = spec.bg0, fg = syn.comment },
+        -- BufferInactiveMod    = { bg = spec.bg0, fg = spec.diag_bg.warn },
+        -- BufferInactiveSign   = { bg = spec.bg0, fg = spec.bg3 },
+        -- BufferInactiveTarget = { bg = spec.bg0, fg = spec.diag.error },
+        -- BufferTabpages       = { bg = spec.bg0 },
+        -- BufferTabpage        = { bg = spec.bg0, fg = spec.bg3 },
+      },
+    },
   })
 
   -- set colorscheme carbonfox

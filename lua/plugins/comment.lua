@@ -2,7 +2,7 @@ local M = {
 	"numToStr/Comment.nvim" ,
     event = "VeryLazy",
 	dependencies =  { "JoosepAlviste/nvim-ts-context-commentstring" },
-	config = {
+	opts = {
 		pre_hook = function(ctx)
 			-- Only calculate commentstring for tsx filetypes
 			if vim.bo.filetype == "typescriptreact" then

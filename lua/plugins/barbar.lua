@@ -24,11 +24,17 @@ function M.config()
         clickable = true,
 
         -- Excludes buffers from the tabline
-        exclude_ft = {'javascript'},
+        exclude_ft = {'fugitive'},
         exclude_name = {'package.json'},
 
         -- Hide file extensions.
         hide = {extensions = true, inactive = false},
+
+        -- highlight alternate buffers
+        highlight_alternate = true,
+
+        -- highlight visible buffers
+        highlight_visible = true,
 
         -- Enable/disable icons
         -- if set to 'numbers', will show buffer index in the tabline

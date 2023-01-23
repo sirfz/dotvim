@@ -23,7 +23,7 @@ function M.setup()
 		signs = {
 			active = signs, -- show signs
 		},
-		update_in_insert = true,
+		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
 		float = {
@@ -33,6 +33,17 @@ function M.setup()
 			source = "always",
 			header = "",
 			prefix = "",
+			-- format = function(diagnostic)
+			-- 	if diagnostic.source == 'eslint' then
+			-- 		return string.format(
+			-- 			'%s [%s]',
+			-- 			diagnostic.message,
+			-- 			-- shows the name of the rule
+			-- 			diagnostic.user_data.lsp.code
+			-- 		)
+			-- 	end
+			-- 	return string.format('%s [%s]', diagnostic.message, serializeTable(diagnostic))
+			-- end,
 		},
 	}
 

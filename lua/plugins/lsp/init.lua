@@ -5,7 +5,7 @@ local M = {
     "hrsh7th/cmp-nvim-lsp",
     {
       "williamboman/mason.nvim",
-      config = {
+      opts = {
         ui = {
           border = "none",
           icons = {
