@@ -60,6 +60,10 @@ function M.config()
         -- BufferInactiveTarget = { bg = spec.bg0, fg = spec.diag.error },
         -- BufferTabpages       = { bg = spec.bg0 },
         -- BufferTabpage        = { bg = spec.bg0, fg = spec.bg3 },
+        BufferAlternate     = { bg = "#666666", fg = "palette.pink" },
+        BufferAlternateIndex     = { bg = "#666666", fg = "palette.pink" },
+        BufferAlternateMod     = { bg = "#666666", fg = "palette.green" },
+        BufferAlternateSign     = { bg = "#666666", fg = "palette.pink" },
       },
     },
   })

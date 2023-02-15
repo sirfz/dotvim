@@ -1,6 +1,7 @@
 local M = {
 	"ahmedkhalf/project.nvim",
-	event = "VeryLazy",
+	-- event = "VeryLazy",
+	lazy = false,
 	dependencies = { "nvim-telescope/telescope.nvim" },
 }
 
@@ -10,9 +11,8 @@ function M.config()
 		-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
 		detection_methods = { "pattern" },
 		-- patterns used to detect root dir, when **"pattern"** is in detection_methods
-		patterns = { ".git", "package.json" },
+		patterns = { ".git", "package.json", "pyproject.toml" },
 	})
-
 	require("telescope").load_extension('projects')
 end
 

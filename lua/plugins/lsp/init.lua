@@ -27,7 +27,7 @@ local M = {
 function M.config()
   local lspconfig = require("lspconfig")
   local servers = {
-      "sumneko_lua",
+      "lua_ls",
       "cssls",
       "html",
       "tsserver",
