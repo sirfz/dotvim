@@ -2,6 +2,7 @@ local M = {
   "EdenEast/nightfox.nvim",
   lazy = false,
   priority = 999,
+  enabled = false
 }
 
 function M.config()

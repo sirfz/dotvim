@@ -47,19 +47,19 @@ vim.opt.diffopt:append("vertical", "algorithm:patience")
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.fillchars = {
-  --   horiz = "━",
-  --   horizup = "┻",
-  --   horizdown = "┳",
-  --   vert = "┃",
-  --   vertleft = "┫",
-  --   vertright = "┣",
-  --   verthoriz = "╋",im.o.fillchars = [[eob: ,
+    horiz = "━",
+    horizup = "┻",
+    horizdown = "┳",
+    vert = "┃",
+    vertleft = "┫",
+    vertright = "┣",
+    verthoriz = "╋",
   -- fold = " ",
   foldopen = "",
   -- foldsep = " ",
   foldclose = "",
+  eob = " ",                                    -- show empty lines at the end of a buffer as ` ` {default `~`}
 }
-vim.opt.fillchars.eob=" "                       -- show empty lines at the end of a buffer as ` ` {default `~`}
 -- folds
 -- vim.o.foldcolumn = "1" -- '0' is not bad
 -- vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
