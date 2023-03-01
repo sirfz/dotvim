@@ -1,8 +1,8 @@
-
 local M = {
   "bluz71/vim-moonfly-colors",
   lazy = false,
   priority = 999,
+  enabled = true
 }
 
 function M.config()
