@@ -91,5 +91,5 @@ keymap("n", "<leader>cc", ":TroubleClose<CR>", opts)
 -- keymap('n', 'zM', require('ufo').closeAllFolds, opts)
 
 -- portal
-keymap("n", "<leader>o", ":lua require('portal').jump_backward()<CR>", opts)
-keymap("n", "<leader>i", ":lua require('portal').jump_forward()<CR>", opts)
+keymap("n", "<leader>o", "<cmd>Portal jumplist backward<cr>", opts)
+keymap("n", "<leader>i", "<cmd>Portal jumplist forward<cr>", opts)
