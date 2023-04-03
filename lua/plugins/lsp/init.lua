@@ -27,13 +27,8 @@ local M = {
 function M.config()
   local lspconfig = require("lspconfig")
   local servers = {
-      "lua_ls",
-      "cssls",
-      "html",
-      "tsserver",
       "pyright",
       "bashls",
-      "jsonls",
       "yamlls",
   }
   require("mason-lspconfig").setup({
