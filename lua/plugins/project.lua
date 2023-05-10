@@ -2,7 +2,7 @@ local M = {
 	"ahmedkhalf/project.nvim",
 	-- event = "VeryLazy",
 	lazy = false,
-	dependencies = { "nvim-telescope/telescope.nvim" },
+	-- dependencies = { "nvim-telescope/telescope.nvim" },
 }
 
 function M.config()
@@ -13,7 +13,7 @@ function M.config()
 		-- patterns used to detect root dir, when **"pattern"** is in detection_methods
 		patterns = { ".git", "package.json", "pyproject.toml" },
 	})
-	require("telescope").load_extension('projects')
+	-- require("telescope").load_extension('projects')
 end
 
 return M

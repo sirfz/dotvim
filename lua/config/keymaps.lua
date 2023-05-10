@@ -59,14 +59,23 @@ keymap("v", ">", ">gv", opts)
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>fm", ":lua require('telescope').extensions.frecency.frecency()<CR>", opts)
+-- keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+-- keymap("n", "<leader>fm", ":lua require('telescope').extensions.frecency.frecency()<CR>", opts)
 -- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
-keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
+-- keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
+-- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+-- keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+-- keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
+-- keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
+
+-- fzf
+keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
+keymap("n", "<leader>fm", ":FzfLua oldfiles<CR>", opts)
+keymap("n", "<leader>ft", ":FzfLua live_grep_glob<CR>", opts)
+keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
+keymap("n", "<leader>fk", ":FzfLua keymaps<CR>", opts)
+keymap("n", "<leader>fd", ":FzfLua diagnostics_document<CR>", opts)
+keymap("n", "<leader>fr", ":FzfLua resume<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)

@@ -1,5 +1,6 @@
 local M = {
   "nvim-telescope/telescope.nvim",
+  enabled = false,
   cmd = { "Telescope" },
   dependencies = {
     "nvim-telescope/telescope-live-grep-args.nvim",
@@ -8,7 +9,9 @@ local M = {
     },
     {
       "nvim-telescope/telescope-frecency.nvim",
-      dependencies = "kkharji/sqlite.lua"
+      enabled = false,
+      dependencies = "kkharji/sqlite.lua",
+      config = true,
     }
   },
 }
@@ -48,12 +51,12 @@ function M.config()
                   },
               },
           },
-          frecency = {
-              show_scores = false,
-              show_unindexed = true,
-              ignore_patterns = {"*.git/*", "*/tmp/*"},
-              disable_devicons = false,
-          },
+          -- frecency = {
+          --     show_scores = false,
+          --     show_unindexed = true,
+          --     ignore_patterns = {"*.git/*", "*/tmp/*"},
+          --     disable_devicons = false,
+          -- },
           fzf = {
               fuzzy = true,                    -- false will only do exact matching
               override_generic_sorter = true,  -- override the generic sorter
@@ -64,8 +67,8 @@ function M.config()
       }
   }
   telescope.load_extension('fzf')
-  telescope.load_extension('frecency')
   telescope.load_extension('live_grep_args')
+  -- telescope.load_extension('frecency')
 end
 
 return M
