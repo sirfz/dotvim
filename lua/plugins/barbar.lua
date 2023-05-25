@@ -1,7 +1,7 @@
 local M = {
     "romgrk/barbar.nvim",
     event = "BufEnter",
-    dependencies = { "kyazdani42/nvim-tree.lua" },
+    dependencies = { "nvim-tree/nvim-tree.lua" },
 }
 
 function M.config()
@@ -38,22 +38,25 @@ function M.config()
 
         -- Enable/disable icons
         icons = {
+            -- Use a preconfigured buffer appearance— can be 'default', 'powerline', or 'slanted'
+            preset = 'default',
+
             buffer_index = true,
             filetype = { enabled = true },
-            inactive = {
-                separator = {
-                    left = '▎'
-                }
-            },
-            active = {
-                separator = {
-                    left =  '▎'
-                }
-            },
+            -- inactive = {
+            --     separator = {
+            --         left = '▎'
+            --     }
+            -- },
+            -- active = {
+            --     separator = {
+            --         left =  '▎'
+            --     }
+            -- },
             pinned = {
-                button = '車',
+                button = '󰐃',
             },
-            button = '',
+            button = '󰅖',
             modified = {
                 button = '●'
             },

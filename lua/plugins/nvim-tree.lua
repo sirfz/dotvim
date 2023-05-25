@@ -1,5 +1,5 @@
 local M = {
-  "kyazdani42/nvim-tree.lua",
+  "nvim-tree/nvim-tree.lua",
   opts = {
     update_focused_file = {
       enable = true,
@@ -37,7 +37,7 @@ local M = {
       enable = true,
       show_on_dirs = true,
       icons = {
-        hint = "",
+        hint = "󰌵",
         info = "",
         warning = "",
         error = "",

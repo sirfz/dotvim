@@ -1,6 +1,6 @@
 return {
   'ibhagwan/fzf-lua',
-  dependencies = { 'kyazdani42/nvim-web-devicons' },
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
   branch = 'main',
   cmd = { 'FzfLua' },
   opts = {

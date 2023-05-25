@@ -102,3 +102,7 @@ keymap("n", "<leader>cc", ":TroubleClose<CR>", opts)
 -- portal
 keymap("n", "<leader>o", "<cmd>Portal jumplist backward<cr>", opts)
 keymap("n", "<leader>i", "<cmd>Portal jumplist forward<cr>", opts)
+
+-- fzf filepath completion
+keymap({ "n", "v", "i" }, "<C-x><C-f>", function() require("fzf-lua").complete_path() end,
+       { silent = true, desc = "Fuzzy complete path" })

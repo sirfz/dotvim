@@ -20,7 +20,7 @@ function M.config()
   dashboard.section.buttons.val = {
     dashboard.button("f", " " .. " Find file", ":FzfLua files<CR>"),
     dashboard.button("e", " " .. " New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("r", " " .. " Recent files", ":FzfLua oldfiles<CR>"),
+    dashboard.button("r", "󰄉 " .. " Recent files", ":FzfLua oldfiles<CR>"),
     dashboard.button("t", " " .. " Find text", ":FzfLua live_grep_glob <CR>"),
     dashboard.button("c", " " .. " Config", ":e $MYVIMRC <CR>"),
     dashboard.button("q", " " .. " Quit", ":qa<CR>"),
