@@ -4,7 +4,8 @@ M = {
     config = function()
         vim.g.csv_start = 1
         vim.g.csv_end = 100
-    end
+    end,
+    enabled = false,
 }
 
 return M
