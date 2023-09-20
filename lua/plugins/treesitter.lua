@@ -7,13 +7,15 @@ local M = {
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
+        "nvim-treesitter/nvim-treesitter-context",
         {
             "yioneko/nvim-yati",
-            dependencies = {
-                "yioneko/vim-tmindent",
-            }
-        }
-    },
+            -- dependencies = {
+            --     "yioneko/vim-tmindent",
+            -- }
+        },
+        "RRethy/vim-illuminate",
+    }
 }
 
 function M.config()
@@ -44,14 +46,14 @@ function M.config()
             --   "asis": use current indent as-is
             --   "cindent": see `:h cindent()`
             -- Or a custom function return the final indent result.
-            -- default_fallback = "auto",
-            default_fallback = function(lnum, computed, bufnr)
-                if vim.tbl_contains(tm_fts, vim.bo[bufnr].filetype) then
-                    return require('tmindent').get_indent(lnum, bufnr) + computed
-                end
-                -- or any other fallback methods
-                return require('nvim-yati.fallback').vim_auto(lnum, computed, bufnr)
-            end,
+            default_fallback = "auto",
+            -- default_fallback = function(lnum, computed, bufnr)
+            --     if vim.tbl_contains(tm_fts, vim.bo[bufnr].filetype) then
+            --         return require('tmindent').get_indent(lnum, bufnr) + computed
+            --     end
+            --     -- or any other fallback methods
+            --     return require('nvim-yati.fallback').vim_auto(lnum, computed, bufnr)
+            -- end,
         },
 
         context_commentstring = {

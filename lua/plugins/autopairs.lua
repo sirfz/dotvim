@@ -1,7 +1,6 @@
 local M = {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-	dependencies = { "hrsh7th/nvim-cmp" },
 }
 function M.config()
 	require("nvim-autopairs").setup({

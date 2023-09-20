@@ -1,27 +1,27 @@
 local M = {
-  "neovim/nvim-lspconfig",
-  event = "BufReadPre",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    {
-      "williamboman/mason.nvim",
-      opts = {
-        ui = {
-          border = "none",
-          icons = {
-            package_installed = "◍",
-            package_pending = "◍",
-            package_uninstalled = "◍",
-          },
+    "neovim/nvim-lspconfig",
+    event = "BufReadPre",
+    dependencies = {
+        "hrsh7th/cmp-nvim-lsp",
+        {
+            "williamboman/mason.nvim",
+            opts = {
+                ui = {
+                    border = "none",
+                    icons = {
+                        package_installed = "◍",
+                        package_pending = "◍",
+                        package_uninstalled = "◍",
+                    },
+                },
+                log_level = vim.log.levels.INFO,
+                max_concurrent_installers = 4,
+            }
         },
-        log_level = vim.log.levels.INFO,
-        max_concurrent_installers = 4,
-      }
-    },
-    "williamboman/mason-lspconfig.nvim",
-    "jose-elias-alvarez/null-ls.nvim",
-    "RRethy/vim-illuminate",
-  }
+        "williamboman/mason-lspconfig.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+        "RRethy/vim-illuminate",
+    }
 }
 
 function M.config()

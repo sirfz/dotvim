@@ -1,5 +1,6 @@
 return {
     "yioneko/vim-tmindent",
+    enabled = false,
     opts = {
         enabled = function() return vim.tbl_contains({ "lua" }, vim.bo.filetype) end,
         use_treesitter = function() return true end, -- used to detect different langauge region and comments
@@ -16,5 +17,5 @@ return {
                 indentnext = {},
             }
         }
-    }
+    },
 }
