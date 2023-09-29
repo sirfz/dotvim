@@ -2,16 +2,30 @@
 
 * neovim > 0.7
 * git (not too old, for Packer)
-* `pip3 install --user ruff pylint perflint black` (for null-ls Python linting/formatting)
+* `pip install ruff black pynvim` (for null-ls Python linting/formatting)
 * ripgrep and fd for fzf-lua
     ```
     sudo apt install ripgrep fd-find
     ```
-* node (for Mason to install language servers/tools)
+* [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/tools)
+    1. Download and import the Nodesource GPG key
     ```
-    curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
-    sudo apt-get install -y nodejs
+    sudo apt-get update
+    sudo apt-get install -y ca-certificates curl gnupg
+    sudo mkdir -p /etc/apt/keyrings
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
     ```
+    2. Create deb repository
+    ```
+    NODE_MAJOR=20
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+    ```
+    3. Run Update and Install
+    ```
+    sudo apt-get update
+    sudo apt-get install nodejs -y
+    ```
+    
 * ~sqlite3-dev (for Telescope-frecency)~
     ```
     sudo apt install libsqlite3-dev
