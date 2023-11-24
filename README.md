@@ -3,9 +3,11 @@
 * neovim > 0.7
 * git (not too old, for Packer)
 * `pip install ruff black pynvim` (for null-ls Python linting/formatting)
-* ripgrep and fd for fzf-lua
+* fzf, ripgrep and fd for fzf-lua
     ```
     sudo apt install ripgrep fd-find
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     ```
 * [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/tools)
     1. Download and import the Nodesource GPG key
