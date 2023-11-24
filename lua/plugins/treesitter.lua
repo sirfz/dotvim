@@ -7,7 +7,13 @@ local M = {
     end,
     dependencies = {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        "nvim-treesitter/nvim-treesitter-context",
+        {
+            "nvim-treesitter/nvim-treesitter-context",
+            config = function()
+                require('ts_context_commentstring').setup {}
+                vim.g.skip_ts_context_commentstring_module = true
+            end
+        },
         {
             "yioneko/nvim-yati",
             -- dependencies = {
@@ -54,11 +60,6 @@ function M.config()
             --     -- or any other fallback methods
             --     return require('nvim-yati.fallback').vim_auto(lnum, computed, bufnr)
             -- end,
-        },
-
-        context_commentstring = {
-            enable = true,
-            enable_autocmd = false,
         },
     })
 end
