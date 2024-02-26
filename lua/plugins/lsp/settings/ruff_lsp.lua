@@ -12,10 +12,6 @@ return {
             format = {
                 args = {
                     "--line-length=120",
-                    "--quote-style=double",
-                    "--indent-style=space",
-                    "--skip-magic-trailing-comma=false",
-                    "--line-ending=auto",
                 },
             },
         },
