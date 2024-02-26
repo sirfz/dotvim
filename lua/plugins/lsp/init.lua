@@ -28,6 +28,7 @@ function M.config()
   local lspconfig = require("lspconfig")
   local servers = {
       "pyright",
+      "ruff_lsp",
       "bashls",
       "yamlls",
   }

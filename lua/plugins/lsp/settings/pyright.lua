@@ -2,6 +2,10 @@
 
 return {
     settings = {
+        pyright = {
+            disableOrganizeImports = true,
+            -- disableTaggedHints = true,
+        },
         python = {
             analysis = {
                 diagnosticMode = "openFilesOnly",
