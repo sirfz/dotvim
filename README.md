@@ -3,9 +3,9 @@
 * neovim > 0.7
 * git (not too old, for Packer)
 * `pip install ruff black pynvim` (for null-ls Python linting/formatting)
-* fzf, ripgrep and fd for fzf-lua
+* [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat) and [fd](https://github.com/sharkdp/fd) for fzf-lua
     ```
-    sudo apt install ripgrep fd-find
+    sudo apt install ripgrep fd-find bat
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
