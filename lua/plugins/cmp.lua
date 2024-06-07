@@ -7,6 +7,19 @@ local M = {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-nvim-lua",
         "saadparwaiz1/cmp_luasnip",
+        {
+            "zbirenbaum/copilot.lua",
+            config = true,
+            cmd = "Copilot",
+            event = "InsertEnter",
+            -- config = function()
+            --   require("copilot").setup({})
+            -- end,
+            dependencies = {
+                "zbirenbaum/copilot-cmp",
+                config = true,
+            }
+        },
     }
 }
 
@@ -108,15 +121,18 @@ function M.config()
             end,
         },
         sources = cmp.config.sources({
-            { name = "nvim_lsp" },
-            { name = "path" },
+            -- Copilot Source
+            { name = "copilot", group_index = 2 },
+            { name = "nvim_lsp", group_index = 2 },
+            { name = "path", group_index = 2 },
             {
                 name = "buffer",
                 option = {
                     get_bufnrs = function()
                         return vim.api.nvim_list_bufs()
                     end
-                }
+                },
+                group_index = 2,
             },
             { name = "luasnip" },
             { name = "nvim_lua" },
