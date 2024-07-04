@@ -16,8 +16,19 @@ local M = {
             --   require("copilot").setup({})
             -- end,
             dependencies = {
-                "zbirenbaum/copilot-cmp",
-                config = true,
+                {
+                    "zbirenbaum/copilot-cmp",
+                    config = true,
+                },
+                {
+                    "CopilotC-Nvim/CopilotChat.nvim",
+                    branch = "canary",
+                    cmd = "CopilotChat",
+                    dependencies = {
+                        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+                    },
+                    config = true,
+                }
             }
         },
     }
@@ -55,6 +66,7 @@ function M.config()
         Event = "",
         Operator = "󰆕",
         TypeParameter = "󰊄",
+        Copilot = "",
     }
 
     local cmp = require("cmp")
