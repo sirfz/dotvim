@@ -15,4 +15,4 @@ vim.opt.runtimepath:prepend(lazypath)
 require("lazy").setup("plugins", {
   defaults = { lazy = true },
 })
-vim.keymap.set("n", "<leader>l", "<cmd>:Lazy<cr>")
+vim.keymap.set("n", "<leader>ll", "<cmd>:Lazy<cr>")
