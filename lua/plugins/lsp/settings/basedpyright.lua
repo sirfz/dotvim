@@ -6,7 +6,7 @@ return {
             disableOrganizeImports = true,
             -- disableTaggedHints = true,
             analysis = {
-                diagnosticMode = "openFilesOnly",
+                -- diagnosticMode = "openFilesOnly",
                 typeCheckingMode = "off",
             },
         },

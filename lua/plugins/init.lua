@@ -68,5 +68,10 @@ return {
         "cbochs/portal.nvim",
         event = "BufEnter",
         config = true
+    },
+    {
+        "j-hui/fidget.nvim",
+        event = "VeryLazy",
+        opts = {},
     }
 }
