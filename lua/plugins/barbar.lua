@@ -1,11 +1,8 @@
 local M = {
     "romgrk/barbar.nvim",
     event = "BufEnter",
-    dependencies = { "nvim-tree/nvim-tree.lua" },
-}
-
-function M.config()
-    require("bufferline").setup {
+    -- init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
         -- Enable/disable animations
         animation = false,
 
@@ -98,27 +95,20 @@ function M.config()
         -- Sets the name of unnamed buffers. By default format is "[Buffer X]"
         -- where X is the buffer number. But only a static string is accepted here.
         no_name_title = nil,
+        sidebar_filetypes = {
+            -- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+            NvimTree = false,
+            -- Or, specify the text used for the offset:
+            undotree = {
+                text = 'undotree',
+                align = 'center', -- *optionally* specify an alignment (either 'left', 'center', or 'right')
+            },
+            -- Or, specify the event which the sidebar executes when leaving:
+            ['neo-tree'] = {event = 'BufWipeout'},
+            -- Or, specify all three
+            Outline = {event = 'BufWinLeave', text = 'symbols-outline', align = 'right'},
+        },
     }
-
-    -- nvim-tree
-    local nvim_tree_events = require('nvim-tree.events')
-    local bufferline_api = require('bufferline.api')
-
-    local function get_tree_size()
-      return require'nvim-tree.view'.View.width
-    end
-
-    nvim_tree_events.subscribe('TreeOpen', function()
-      bufferline_api.set_offset(get_tree_size())
-    end)
-
-    nvim_tree_events.subscribe('Resize', function()
-      bufferline_api.set_offset(get_tree_size())
-    end)
-
-    nvim_tree_events.subscribe('TreeClose', function()
-      bufferline_api.set_offset(0)
-    end)
-end
+}
 
 return M
