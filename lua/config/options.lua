@@ -54,11 +54,12 @@ vim.opt.fillchars = {
     vertleft = "┫",
     vertright = "┣",
     verthoriz = "╋",
-  -- fold = " ",
-  foldopen = "",
-  -- foldsep = " ",
-  foldclose = "",
-  eob = " ",                                    -- show empty lines at the end of a buffer as ` ` {default `~`}
+    -- fold = " ",
+    foldopen = "",
+    -- foldsep = " ",
+    foldclose = "",
+    eob = " ",                                  -- show empty lines at the end of a buffer as ` ` {default `~`}
+    diff = "╱",                                 -- show removed lines in diff mode as `╱` {default `-`}
 }
 -- folds
 -- vim.o.foldcolumn = "1" -- '0' is not bad
