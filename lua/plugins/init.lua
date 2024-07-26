@@ -73,5 +73,10 @@ return {
         "j-hui/fidget.nvim",
         event = "VeryLazy",
         opts = {},
+    },
+    {
+        "sindrets/diffview.nvim",
+        event = "VeryLazy",
+        opts = {},
     }
 }
