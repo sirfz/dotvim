@@ -7,7 +7,7 @@ return {
             -- disableTaggedHints = true,
             analysis = {
                 -- diagnosticMode = "openFilesOnly",
-                typeCheckingMode = "off",
+                typeCheckingMode = "basic",
             },
         },
     },
