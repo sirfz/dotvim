@@ -1,6 +1,7 @@
 local M = {
     "neovim/nvim-lspconfig",
-    event = "BufReadPre",
+    -- event = "BufReadPre",
+    lazy = false,
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
         {
@@ -19,9 +20,9 @@ local M = {
             }
         },
         "williamboman/mason-lspconfig.nvim",
-        "nvimtools/none-ls.nvim",
+        -- "nvimtools/none-ls.nvim",
         "RRethy/vim-illuminate",
-    }
+    },
 }
 
 function M.config()
@@ -57,7 +58,7 @@ function M.config()
     lspconfig[server].setup(opts)
   end
   handlers.setup()
-  require("plugins.lsp.null-ls").setup()
+  -- require("plugins.lsp.null-ls").setup()
 end
 
 return M

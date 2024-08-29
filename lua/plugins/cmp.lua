@@ -7,6 +7,7 @@ local M = {
         "hrsh7th/cmp-path",
         "hrsh7th/cmp-nvim-lua",
         "saadparwaiz1/cmp_luasnip",
+        "windwp/nvim-autopairs",
         {
             "zbirenbaum/copilot.lua",
             config = true,
