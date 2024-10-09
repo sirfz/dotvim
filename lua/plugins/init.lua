@@ -79,4 +79,9 @@ return {
         cmd = "DiffviewOpen",
         opts = {},
     },
+    {
+        'hat0uma/csvview.nvim',
+        ft = "csv",
+        config = true
+    }
 }
