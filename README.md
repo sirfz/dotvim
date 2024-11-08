@@ -1,15 +1,8 @@
 ### Requirements:
 
-* neovim > 0.7
-* git (not too old, for Packer)
-* `pip install ruff black pynvim` (for null-ls Python linting/formatting)
-* [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat) and [fd](https://github.com/sharkdp/fd) for fzf-lua
-    ```
-    sudo apt install ripgrep fd-find bat
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-    ```
-* [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/tools)
+* neovim >= 0.10
+* git (not too old, for package management)
+* [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/linters)
     ```
     # Download setup script
     curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
@@ -17,6 +10,12 @@
     sudo -E bash nodesource_setup.sh
     # install node (also installs npm)
     sudo apt-get install -y nodejs
+* [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat) and [fd](https://github.com/sharkdp/fd) for fzf-lua
+    ```
+    sudo apt install ripgrep fd-find bat
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    ```
     ```
     
 ### Installation:
