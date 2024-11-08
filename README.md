@@ -10,29 +10,15 @@
     ~/.fzf/install
     ```
 * [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/tools)
-    1. Download and import the Nodesource GPG key
     ```
-    sudo apt-get update
-    sudo apt-get install -y ca-certificates curl gnupg
-    sudo mkdir -p /etc/apt/keyrings
-    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-    ```
-    2. Create deb repository
-    ```
-    NODE_MAJOR=20
-    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_$NODE_MAJOR.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-    ```
-    3. Run Update and Install
-    ```
-    sudo apt-get update
-    sudo apt-get install nodejs -y
+    # Download setup script
+    curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
+    # Run the setup script with sudo:
+    sudo -E bash nodesource_setup.sh
+    # install node (also installs npm)
+    sudo apt-get install -y nodejs
     ```
     
-* ~sqlite3-dev (for Telescope-frecency)~
-    ```
-    sudo apt install libsqlite3-dev
-    ```
-
 ### Installation:
 
 ```sh
@@ -43,6 +29,17 @@ To install all plugins, just run neovim (lazy.nvim will automatically install al
 
 ```sh
 vim
+```
+
+### alias vim to nvim (system-wide)
+
+```bash
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
+sudo update-alternatives --config vim
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 60
+sudo update-alternatives --config editor
 ```
 
 ### Tmux
@@ -72,38 +69,17 @@ set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
 set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m'  # underscore colours - needs tmux-3.0
 ```
 
-### pylint
+### ruff/basedpyright default config
 
-~/.pylintrc:
+pyproject.toml:
 
-```
-extension-pkg-allow-list=orjson
+```toml
+[tool.basedpyright]
+typeCheckingMode = "off"
+reportUnusedImport = false
 
-disable=raw-checker-failed,
-        bad-inline-option,
-        locally-disabled,
-        file-ignored,
-        suppressed-message,
-        useless-suppression,
-        deprecated-pragma,
-        use-symbolic-message-instead,
-        unused-argument,
-        inconsistent-return-statements,
-        invalid-name,
-        too-many-lines,
-        missing-module-docstring,
-        wrong-import-order,
-        line-too-long,
-        missing-function-docstring,
-        undefined-variable,
-        too-many-locals,
-        too-many-branches,
-        too-many-statements,
-        unused-import,
-        ungrouped-imports,
-        missing-class-docstring,
-        too-few-public-methods,
-        too-many-instance-attributes,
-        unused-variable,
-        attribute-defined-outside-init,
+[tool.ruff]
+line-length = 120
+select = ["E", "F", "A", "UP", "PIE", "PLC", "PLE", "PLR", "PLW", "RUF"]
+ignore = ["E741"]
 ```
