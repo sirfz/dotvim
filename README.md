@@ -85,7 +85,15 @@ ignore = ["E741"]
 
 ### GNU Screen 5 with truecolor support
 
+#### Pre-requisites
+
+```bash
+sudo apt update && sudo apt install -y git autoconf automake libtool make gcc libncurses5-dev libpam0g-dev libssl-dev
 ```
+
+#### Build and install
+
+```bash
 git clone https://git.savannah.gnu.org/git/screen.git
 cd screen/src
 NOCONFIGURE=1 ./autogen.sh
@@ -99,7 +107,7 @@ make
 sudo make install
 ```
 
-.screenrc
+#### Configure .screenrc
 
 ```
 # this config requires Screen v5 (-git master branch release)
