@@ -82,3 +82,37 @@ line-length = 120
 select = ["E", "F", "A", "UP", "PIE", "PLC", "PLE", "PLR", "PLW", "RUF"]
 ignore = ["E741"]
 ```
+
+### GNU Screen 5 with truecolor support
+
+```
+git clone https://git.savannah.gnu.org/git/screen.git
+cd screen/src
+NOCONFIGURE=1 ./autogen.sh
+sh ./configure \
+    --prefix=/usr/local \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --enable-pam \
+    --enable-telnet
+make
+sudo make install
+```
+
+.screenrc
+
+```
+# this config requires Screen v5 (-git master branch release)
+truecolor on
+hardstatus off # puts notifications at the bottom
+# hardstatus alwaysfirstline '%{#999999}[ GNU screen ]%{#ffffff} %< %{7}%?%-Lw%?%{1;0}%{#009dff}(== %{#ffffff}%n %h%?(%u)%?%{1;0}%{#009dff} ==)%{7}%?%+Lw%?%?'
+altscreen on
+bind 0 select 10
+bind c screen 1
+defscrollback 5000
+maptimeout 0
+screen 1
+startup_message off
+```
+
+reference: https://dev.to/kj_sh604/my-simple-gnu-screen-set-up-tmux-alternative-41j0
