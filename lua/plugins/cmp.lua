@@ -24,8 +24,8 @@ local M = {
                 },
                 {
                     "CopilotC-Nvim/CopilotChat.nvim",
-                    branch = "canary",
                     cmd = "CopilotChat",
+                    branch = "main",
                     dependencies = {
                         { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
                     },
