@@ -3,7 +3,8 @@ local M = {
     -- event = "BufReadPre",
     lazy = false,
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
+        -- "hrsh7th/cmp-nvim-lsp",
+        "saghen/blink.cmp",
         {
             "williamboman/mason.nvim",
             opts = {

@@ -1,10 +1,12 @@
 local M = {}
 
-local cmp_nvim_lsp = require("cmp_nvim_lsp")
+-- local cmp_nvim_lsp = require("cmp_nvim_lsp")
+local blink_cmp = require("blink.cmp")
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+-- M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+M.capabilities = blink_cmp.get_lsp_capabilities(M.capabilities)
 
 function M.setup()
 	local signs = {
