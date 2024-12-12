@@ -83,18 +83,13 @@ return {
 
         -- experimental auto-brackets support
         completion = {
-            list = {
-                selection = 'auto_insert',
-            },
+            list = { selection = 'auto_insert' },
+            documentation = { auto_show = true },
             accept = { auto_brackets = { enabled = true } }
         },
 
         -- experimental signature help support
         signature = { enabled = true },
-
-        documentation = {
-            auto_show = true,
-        },
     },
 
     -- allows extending the providers array elsewhere in your config
