@@ -79,9 +79,10 @@ return {
                 },
             },
             default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', },
+            -- optionally disable cmdline completions
+            cmdline = {},
         },
 
-        -- experimental auto-brackets support
         completion = {
             list = { selection = 'auto_insert' },
             documentation = { auto_show = true },
