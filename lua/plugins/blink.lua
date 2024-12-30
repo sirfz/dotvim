@@ -5,6 +5,19 @@ return {
     dependencies = {
         'rafamadriz/friendly-snippets',
         {
+            'echasnovski/mini.icons',
+            version = '*',
+            lazy = true,
+            opts = function()
+                require("mini.icons").mock_nvim_web_devicons()
+                return {
+                    lsp = {
+                        copilot = { glyph = '', hl = 'MiniIconsOrange'  }
+                    }
+                }
+            end,
+        },
+        {
             "zbirenbaum/copilot.lua",
             config = true,
             cmd = "Copilot",
@@ -76,6 +89,15 @@ return {
                 copilot = {
                     name = 'copilot',
                     module = 'blink-cmp-copilot',
+                    transform_items = function(_, items)
+                        local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+                        local kind_idx = #CompletionItemKind + 1
+                        CompletionItemKind[kind_idx] = "Copilot"
+                        for _, item in ipairs(items) do
+                            item.kind = kind_idx
+                        end
+                        return items
+                    end,
                 },
             },
             default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', },
@@ -86,7 +108,28 @@ return {
         completion = {
             list = { selection = 'auto_insert' },
             documentation = { auto_show = true },
-            accept = { auto_brackets = { enabled = true } }
+            accept = { auto_brackets = { enabled = true } },
+            menu = {
+                draw = {
+                    components = {
+                        kind_icon = {
+                            ellipsis = false,
+                            text = function(ctx)
+                                local kind_icon, _, _ = require('mini.icons').get('lsp', ctx.kind)
+                                return kind_icon
+                            end,
+                            highlight = function(ctx)
+                                -- return (
+                                -- require("blink.cmp.completion.windows.render.tailwind").get_hl(ctx)
+                                -- or "BlinkCmpKind"
+                                -- ) .. ctx.kind
+                                local _, hl, _ = require('mini.icons').get('lsp', ctx.kind)
+                                return hl
+                            end,
+                        },
+                    },
+                },
+            },
         },
 
         -- experimental signature help support
