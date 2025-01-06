@@ -3,10 +3,10 @@ return {
     {
         "bluz71/vim-moonfly-colors",
         lazy = false,
-        priority = 999,
+        priority = 1000,
         enabled = true,
         config = function()
-            vim.cmd [[colorscheme moonfly]]
+            vim.cmd.colorscheme("moonfly")
             vim.api.nvim_set_hl(0, "BufferCurrent", { fg = "#e4e4e4", bg = "#444444", bold = true })
             vim.api.nvim_set_hl(0, "BufferCurrentMod", { fg = "#e3c78a", bg = "#444444", bold = true })
             vim.api.nvim_set_hl(0, "BufferCurrentIndex", { fg = "#e4e4e4", bg = "#444444", bold = true })
@@ -27,50 +27,6 @@ return {
         enabled = false,
         config = function()
             vim.cmd [[colorscheme oxocarbon]]
-        end
-    },
-    -- themer jellybeans
-    {
-        "ThemerCorp/themer.lua",
-        lazy = false,
-        priority = 999,
-        enabled = false,
-        opts = {
-            colorscheme = "jellybeans",
-            transparent = false,
-            term_colors = true,
-            dim_inactive = false,
-            styles = {
-                comment = { style = "italic" },
-            },
-            enable_installer = false, -- enable installer module
-        }
-    },
-    -- base16 jellybeans
-    {
-        "RRethy/nvim-base16",
-        lazy = false,
-        priority = 999,
-        enabled = false,
-        config = function()
-            require("base16-colorscheme").setup({
-                base00 = "#1c1c1c",
-                base01 = "#d7afff",
-                base02 = "#72a25a",
-                base03 = "#d8ad4c",
-                base04 = "#597bc5",
-                base05 = "#8787af",
-                base06 = "#4a8382",
-                base07 = "#99ad6a",
-                base08 = "#e8e8de",
-                base09 = "#ffb964",
-                base0A = "#adadad",
-                base0B = "#fad07a",
-                base0C = "#8197bf",
-                base0D = "#d75f5f",
-                base0E = "#8fbfdc",
-                base0F = "#e8e8de",
-            })
         end
     },
     -- nightfox (carbonfox)
@@ -147,4 +103,58 @@ return {
             vim.cmd [[colorscheme carbonfox]]
         end
     },
+    -- jellybeans
+    {
+        "ThemerCorp/themer.lua",
+        lazy = false,
+        priority = 999,
+        enabled = false,
+        opts = {
+            colorscheme = "jellybeans",
+            transparent = false,
+            term_colors = true,
+            dim_inactive = false,
+            styles = {
+                comment = { style = "italic" },
+            },
+            enable_installer = false, -- enable installer module
+        }
+    },
+    -- base16 jellybeans
+    {
+        "RRethy/nvim-base16",
+        lazy = false,
+        priority = 999,
+        enabled = false,
+        config = function()
+            require("base16-colorscheme").setup({
+                base00 = "#1c1c1c",
+                base01 = "#d7afff",
+                base02 = "#72a25a",
+                base03 = "#d8ad4c",
+                base04 = "#597bc5",
+                base05 = "#8787af",
+                base06 = "#4a8382",
+                base07 = "#99ad6a",
+                base08 = "#e8e8de",
+                base09 = "#ffb964",
+                base0A = "#adadad",
+                base0B = "#fad07a",
+                base0C = "#8197bf",
+                base0D = "#d75f5f",
+                base0E = "#8fbfdc",
+                base0F = "#e8e8de",
+            })
+        end
+    },
+    {
+        "wtfox/jellybeans.nvim",
+        priority = 1000,
+        lazy = false,
+        enabled = false,
+        config = function()
+            require("jellybeans").setup()
+            vim.cmd.colorscheme("jellybeans")
+        end
+    }
 }

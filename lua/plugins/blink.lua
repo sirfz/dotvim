@@ -3,6 +3,7 @@ return {
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
     dependencies = {
+        "olimorris/codecompanion.nvim",
         'rafamadriz/friendly-snippets',
         {
             'echasnovski/mini.icons',
@@ -12,43 +13,15 @@ return {
                 require("mini.icons").mock_nvim_web_devicons()
                 return {
                     lsp = {
-                        copilot = { glyph = '', hl = 'MiniIconsOrange'  }
+                        copilot = { glyph = '', hl = 'MiniIconsOrange'  },
                     }
                 }
             end,
         },
-        {
-            "zbirenbaum/copilot.lua",
-            config = true,
-            cmd = "Copilot",
-            event = "InsertEnter",
-            opts = {
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            },
-            dependencies = {
-                {
-                    'giuxtaposition/blink-cmp-copilot',
-                },
-                {
-                    "CopilotC-Nvim/CopilotChat.nvim",
-                    cmd = "CopilotChat",
-                    branch = "main",
-                    dependencies = {
-                        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-                    },
-                    config = true,
-                }
-            }
-        }
+        'giuxtaposition/blink-cmp-copilot',
     },
 
-    -- use a release tag to download pre-built binaries
-    -- version = 'v0.*',
-    -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
     build = 'cargo build --release',
-    -- If you use nix, you can build from source using latest nightly rust with:
-    -- build = 'nix run .#build-plugin',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -79,7 +52,7 @@ return {
             use_nvim_cmp_as_default = true,
             -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
             -- Adjusts spacing to ensure icons are aligned
-            nerd_font_variant = 'mono'
+            nerd_font_variant = 'normal'
         },
 
         -- default list of enabled providers defined so that you can extend it
@@ -89,6 +62,8 @@ return {
                 copilot = {
                     name = 'copilot',
                     module = 'blink-cmp-copilot',
+                    score_offset = 100,
+                    async = true,
                     transform_items = function(_, items)
                         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
                         local kind_idx = #CompletionItemKind + 1
@@ -100,7 +75,7 @@ return {
                     end,
                 },
             },
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', },
+            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codecompanion' },
             -- optionally disable cmdline completions
             cmdline = {},
         },
