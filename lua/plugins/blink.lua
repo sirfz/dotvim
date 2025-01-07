@@ -62,7 +62,7 @@ return {
                 copilot = {
                     name = 'copilot',
                     module = 'blink-cmp-copilot',
-                    score_offset = 100,
+                    -- score_offset = 100,
                     async = true,
                     transform_items = function(_, items)
                         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
@@ -81,7 +81,7 @@ return {
         },
 
         completion = {
-            list = { selection = 'auto_insert' },
+            list = { selection = { preselect = false, auto_insert = true } },
             documentation = { auto_show = true },
             accept = { auto_brackets = { enabled = true } },
             menu = {
