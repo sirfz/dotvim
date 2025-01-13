@@ -1,7 +1,7 @@
 return {
     {
         "zbirenbaum/copilot.lua",
-        enabled = false,
+        enabled = true,
         config = true,
         cmd = "Copilot",
         event = "InsertEnter",
@@ -10,19 +10,7 @@ return {
             panel = { enabled = false },
         },
         dependencies = {
-            -- {
-            --     "CopilotC-Nvim/CopilotChat.nvim",
-            --     cmd = "CopilotChat",
-            --     branch = "main",
-            --     dependencies = {
-            --         "nvim-lua/plenary.nvim", -- for curl, log wrapper
-            --     },
-            --     config = true,
-            -- },
-            {
-                "giuxtaposition/blink-cmp-copilot",
-            },
-
+            "giuxtaposition/blink-cmp-copilot",
         }
     },
 }
