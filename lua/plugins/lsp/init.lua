@@ -32,7 +32,6 @@ function M.config()
       "basedpyright",
       "ruff",
       "bashls",
-      "yamlls",
   }
   require("mason-lspconfig").setup({
     ensure_installed = servers,
