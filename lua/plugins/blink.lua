@@ -76,8 +76,11 @@ return {
                 },
             },
             default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codecompanion' },
-            -- optionally disable cmdline completions
-            cmdline = {},
+        },
+
+        -- optionally disable cmdline completions
+        cmdline = {
+            enabled = false,
         },
 
         completion = {
