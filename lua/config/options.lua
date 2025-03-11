@@ -43,7 +43,7 @@ vim.opt.textwidth = 120                         -- Lines are automatically wrapp
 vim.opt.colorcolumn = "+1"                      -- draw colorcolumn after textwidth
 vim.opt.backspace = "2"                         -- backspace=indent,eol,start
 vim.opt.virtualedit = "block"                   -- Let cursor move past the last char in <C-v> mode 
-vim.opt.diffopt:append("vertical", "algorithm:histogram", "linematch:60")
+vim.opt.diffopt:append { "vertical", "algorithm:patience", "linematch:60" }
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.fillchars = {
