@@ -27,7 +27,7 @@ local M = {
 }
 
 function M.config()
-  local lspconfig = require("lspconfig")
+  -- local lspconfig = require("lspconfig")
   local servers = {
       "basedpyright",
       "ruff",
@@ -55,7 +55,8 @@ function M.config()
       opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end
 
-    lspconfig[server].setup(opts)
+    -- lspconfig[server].setup(opts)
+    vim.lsp.config(server, opts)
   end
   handlers.setup()
   -- require("plugins.lsp.null-ls").setup()
