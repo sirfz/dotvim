@@ -16,8 +16,11 @@
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install
     ```
+* or just use [mise](https://mise.jdx.dev/)
     ```
-    
+    mise u -g node@22 rg fd bat fzf
+    ```
+
 ### Installation:
 
 ```sh
