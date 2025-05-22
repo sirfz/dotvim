@@ -63,8 +63,10 @@ set -g status off
 # binds (closer to gnu screen)
 unbind C-b
 set -g prefix C-a
+bind-key a send-prefix
 bind-key C-a last-window  # screen behavior
-bind-key Space next-window
+unbind space
+bind-key space next-window
 bind-key BSpace previous-window
 # undercurl
 set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm'  # undercurl support
