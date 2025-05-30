@@ -1,5 +1,6 @@
 local M = {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     event = "BufReadPost",
     build = function()
         local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
