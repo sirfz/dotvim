@@ -68,7 +68,7 @@ keymap("v", ">", ">gv", opts)
 -- fzf
 keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
 keymap("n", "<leader>fm", ":FzfLua oldfiles<CR>", opts)
-keymap("n", "<leader>ft", ":FzfLua live_grep_glob<CR>", opts)
+keymap("n", "<leader>ft", ":FzfLua live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
 keymap("n", "<leader>fk", ":FzfLua keymaps<CR>", opts)
 keymap("n", "<leader>fd", ":FzfLua diagnostics_document<CR>", opts)
