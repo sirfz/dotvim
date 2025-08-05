@@ -66,8 +66,10 @@ keymap("v", ">", ">gv", opts)
 -- keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
 
 -- fzf
-keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
-keymap("n", "<leader>fm", ":FzfLua oldfiles<CR>", opts)
+-- keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
+-- keymap("n", "<leader>fm", ":FzfLua oldfiles<CR>", opts)
+keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua-frecency').frecency({cwd_only=true, all_files=true})<CR>", opts)
+keymap("n", "<leader>fm", "<cmd>lua require('fzf-lua-frecency').frecency({cwd_only=false, all_files=true})<CR>", opts)
 keymap("n", "<leader>ft", ":FzfLua live_grep<CR>", opts)
 keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
 keymap("n", "<leader>fk", ":FzfLua keymaps<CR>", opts)
