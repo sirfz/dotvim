@@ -1,6 +1,7 @@
 return {
     {
         'ibhagwan/fzf-lua',
+        enabled = false,
         dependencies = { 'nvim-tree/nvim-web-devicons' },
         branch = 'main',
         cmd = { 'FzfLua' },
@@ -15,6 +16,7 @@ return {
     },
     {
         'elanmed/fzf-lua-frecency.nvim',
+        enabled = false,
         dependencies = 'ibhagwan/fzf-lua',
         config = true,
     }
