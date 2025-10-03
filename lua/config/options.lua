@@ -44,7 +44,7 @@ vim.opt.colorcolumn = "+1"                      -- draw colorcolumn after textwi
 vim.opt.backspace = "2"                         -- backspace=indent,eol,start
 vim.opt.virtualedit = "block"                   -- Let cursor move past the last char in <C-v> mode 
 -- vim.opt.diffopt:append { "vertical", "algorithm:patience", "linematch:60" }
-vim.opt.diffopt:append { "vertical" }
+vim.opt.diffopt:append { "vertical", "algorithm:patience" }
 vim.opt.grepprg = "rg --vimgrep"
 vim.opt.grepformat = "%f:%l:%c:%m"
 vim.opt.fillchars = {
