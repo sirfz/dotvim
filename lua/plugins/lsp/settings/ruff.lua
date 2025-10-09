@@ -1,11 +1,10 @@
 
 return {
+    cmd = { 'uvx', 'ruff', 'server' },
     init_options = {
         settings = {
             lint = {
                 args = {
-                    "--select=E,F,A,ARG,UP,PIE,PLC,PLE,PLR,PLW,RUF",
-                    "--ignore=ARG001,PLR2004,E741,PLR0913",
                     "--line-length=120",
                 }
             },
@@ -16,4 +15,8 @@ return {
             },
         },
     },
+    on_attach = function(client, bufnr)
+        -- Disable hover in favor of Pyright
+        client.server_capabilities.hoverProvider = false
+    end,
 }
