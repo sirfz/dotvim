@@ -32,8 +32,8 @@ function M.config()
         "basedpyright",
         "ruff",
         -- "zuban",
-        -- "pyrefly",
-        "ty",
+        "pyrefly",
+        -- "ty",
     }
 
     for _, server in pairs(servers) do
