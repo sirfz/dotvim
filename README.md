@@ -1,24 +1,21 @@
 ### Requirements:
 
-* neovim >= 0.10
+* neovim >= 0.11
 * git (not too old, for package management)
-* [Node.js](https://github.com/nodesource/distributions#debian-and-ubuntu-based-distributions) (for Mason to install language servers/linters)
+* full setup with [mise](https://mise.jdx.dev/)
     ```
-    # Download setup script
-    curl -fsSL https://deb.nodesource.com/setup_22.x -o nodesource_setup.sh
-    # Run the setup script with sudo:
-    sudo -E bash nodesource_setup.sh
-    # install node (also installs npm)
-    sudo apt-get install -y nodejs
-* [fzf](https://github.com/junegunn/fzf), [ripgrep](https://github.com/BurntSushi/ripgrep), [bat](https://github.com/sharkdp/bat) and [fd](https://github.com/sharkdp/fd) for fzf-lua
+    curl https://mise.run | sh
+    # mise/fzf shell integration
+    echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
+    echo 'eval "$(fzf --bash)"' >> ~/.bashrc
+    echo 'export FZF_DEFAULT_COMMAND="fd --type f"' >> ~/.bashrc
+    # activate mise
+    eval "$(~/.local/bin/mise activate bash)"
+    # install tools
+    mise u -g rust@nightly node@22 rg fd bat fzf uv neovim
+    # language servers
+    mise u -g pipx:ty pipx:pyrefly pipx:basedpyright pipx:ruff npm:@github/copilot-language-server opencode
     ```
-    sudo apt install ripgrep fd-find bat
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
-    ```
-* or just use [mise](https://mise.jdx.dev/)
-    ```
-    mise u -g node@22 rg fd bat fzf
     ```
 
 ### Installation:

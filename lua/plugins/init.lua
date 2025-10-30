@@ -2,17 +2,6 @@ return {
     "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
     "nvim-tree/nvim-web-devicons",
 
-    -- snippets
-    {
-        "L3MON4D3/LuaSnip", -- snippet engine
-        dependencies = {
-            "rafamadriz/friendly-snippets", -- a bunch of snippets to use
-            config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-            end
-        },
-    },
-
     {
         "nvim-treesitter/nvim-treesitter-context",
         event = "BufReadPre",

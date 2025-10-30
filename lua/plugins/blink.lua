@@ -3,8 +3,6 @@ return {
     lazy = false, -- lazy loading handled internally
     -- optional: provides snippets for the snippet source
     dependencies = {
-        "olimorris/codecompanion.nvim",
-        'rafamadriz/friendly-snippets',
         {
             'echasnovski/mini.icons',
             version = '*',
@@ -34,9 +32,19 @@ return {
         -- your own keymap.
         keymap = {
             preset = 'enter',
-            ['<Tab>'] = {
-                'select_next',
-                'fallback',
+            -- ['<Tab>'] = {
+            --     'select_next',
+            --     'fallback',
+            -- },
+            ["<Tab>"] = {
+                "select_next",
+                function() -- sidekick next edit suggestion
+                    return require("sidekick").nes_jump_or_apply()
+                end,
+                function() -- if you are using Neovim's native inline completions
+                    return vim.lsp.inline_completion.get()
+                end,
+                "fallback",
             },
             ['<S-Tab>'] = {
                 'select_prev',
@@ -64,7 +72,7 @@ return {
                     name = 'copilot',
                     -- module = 'blink-cmp-copilot',
                     module = 'blink-copilot',
-                    score_offset = 100,
+                    -- score_offset = 100,
                     async = true,
                     -- transform_items = function(_, items)
                     --     local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
@@ -77,7 +85,7 @@ return {
                     -- end,
                 },
             },
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', 'codecompanion' },
+            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
         },
 
         -- optionally disable cmdline completions

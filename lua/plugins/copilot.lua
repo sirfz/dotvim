@@ -8,7 +8,7 @@ return {
             suggestion = { enabled = false },
             panel = { enabled = false },
             nes = {
-                enabled = true,
+                enabled = false,
                 keymap = {
                     accept_and_goto = "<leader>p",
                     accept = false,
@@ -16,13 +16,5 @@ return {
                 },
             },
         },
-        dependencies = {
-            {
-                "copilotlsp-nvim/copilot-lsp",
-                config = function()
-                    vim.g.copilot_nes_debounce = 500
-                end,
-            }
-        }
     },
 }

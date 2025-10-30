@@ -11,7 +11,7 @@ function M.config()
 		-- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
 		detection_methods = { "pattern" },
 		-- patterns used to detect root dir, when **"pattern"** is in detection_methods
-		patterns = { ".git", "package.json", "pyproject.toml" },
+		patterns = { ".git", ".venv/" },
 	})
 	-- require("telescope").load_extension('projects')
 end

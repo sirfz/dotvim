@@ -34,6 +34,7 @@ function M.config()
         -- "zuban",
         "pyrefly",
         -- "ty",
+        "copilot"
     }
 
     for _, server in pairs(servers) do
