@@ -41,9 +41,9 @@ return {
                 function() -- sidekick next edit suggestion
                     return require("sidekick").nes_jump_or_apply()
                 end,
-                function() -- if you are using Neovim's native inline completions
-                    return vim.lsp.inline_completion.get()
-                end,
+                -- function() -- if you are using Neovim's native inline completions
+                --     return vim.lsp.inline_completion.get()
+                -- end,
                 "fallback",
             },
             ['<S-Tab>'] = {
@@ -72,18 +72,22 @@ return {
                     name = 'copilot',
                     -- module = 'blink-cmp-copilot',
                     module = 'blink-copilot',
-                    -- score_offset = 100,
+                    score_offset = 100,
                     async = true,
-                    -- transform_items = function(_, items)
-                    --     local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-                    --     local kind_idx = #CompletionItemKind + 1
-                    --     CompletionItemKind[kind_idx] = "Copilot"
-                    --     for _, item in ipairs(items) do
-                    --         item.kind = kind_idx
-                    --     end
-                    --     return items
-                    -- end,
                 },
+                buffer = {
+                    opts = {
+                        -- get all normal buffers
+                        get_bufnrs = function()
+                            return vim.tbl_filter(function(bufnr)
+                                return vim.bo[bufnr].buftype == ''
+                            end, vim.api.nvim_list_bufs())
+                        end
+                    }
+                },
+                lsp = {
+                    fallbacks = {}
+                }
             },
             default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
         },
