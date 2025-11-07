@@ -1,7 +1,7 @@
 -- local util = require("lspconfig/util")
 
 return {
-    cmd = { 'uvx', '--from=basedpyright', 'basedpyright-langserver', '--stdio' },
+    -- cmd = { 'uvx', '--from=basedpyright', 'basedpyright-langserver', '--stdio' },
     settings = {
         basedpyright = {
             disableOrganizeImports = true,

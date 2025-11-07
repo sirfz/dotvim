@@ -1,4 +1,4 @@
 
 return {
-    cmd = { 'uvx', 'pyrefly', 'lsp' },
+    -- cmd = { 'uvx', 'pyrefly', 'lsp' },
 }

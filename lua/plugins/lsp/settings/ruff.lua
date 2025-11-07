@@ -1,6 +1,6 @@
 
 return {
-    cmd = { 'uvx', 'ruff', 'server' },
+    -- cmd = { 'uvx', 'ruff', 'server' },
     init_options = {
         settings = {
             lint = {

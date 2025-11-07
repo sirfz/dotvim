@@ -1,5 +1,5 @@
 return {
-    cmd = { 'uvx', 'ty', 'server' },
+    -- cmd = { 'uvx', 'ty', 'server' },
     settings = {
         ty = {
             experimental = {

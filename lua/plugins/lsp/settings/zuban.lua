@@ -1,3 +1,3 @@
 return {
-    cmd = { 'uvx', 'zuban', 'server' },
+    -- cmd = { 'uvx', 'zuban', 'server' },
 }
