@@ -16,7 +16,6 @@
     # language servers
     mise u -g pipx:ty pipx:pyrefly pipx:basedpyright pipx:ruff npm:@github/copilot-language-server opencode
     ```
-    ```
 
 ### Installation:
 
