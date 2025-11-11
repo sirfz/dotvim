@@ -15,8 +15,17 @@ return {
             },
         },
     },
+    -- capabilities = {
+    --     textDocument = {
+    --         hover = {
+    --             dynamic_registration: false,
+    --         }
+    --     },
+    -- },
     on_attach = function(client, bufnr)
         -- Disable hover in favor of Pyright
-        client.server_capabilities.hoverProvider = false
+        if client.name == "ruff" then
+            client.server_capabilities.hoverProvider = false
+        end
     end,
 }
