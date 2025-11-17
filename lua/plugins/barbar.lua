@@ -110,8 +110,14 @@ local M = {
         },
     },
     keys = {
-        { "<C-p>", ":BufferPick<CR>", mode = "n", desc = "Show buffer picker" },
-        { "<S-q>", ":BufferClose<CR>", mode = "n", desc = "Close buffer" },
+        { "<C-p>", ":BufferPick<CR>", mode = "n", desc = "Show buffer picker", silent = true },
+        { "<S-q>", ":BufferClose<CR>", mode = "n", desc = "Close buffer", silent = true },
+        { "]mb", ":BufferMoveNext<CR>", mode = "n", desc = "Move buffer right", silent = true },
+        { "[mb", ":BufferMovePrevious<CR>", mode = "n", desc = "Move buffer left", silent = true },
+        { "]b", ":BufferNext<CR>", mode = "n", desc = "Next buffer", silent = true },
+        { "[b", ":BufferPrevious<CR>", mode = "n", desc = "Previous buffer", silent = true },
+        { "]B", ":BufferLast<CR>", mode = "n", desc = "Last buffer", silent = true },
+        { "[B", ":BufferFirst<CR>", mode = "n", desc = "First buffer", silent = true },
     },
 }
 

@@ -4,7 +4,14 @@ return {
     { 'nvim-mini/mini.pairs', version = false, event = "InsertEnter", config = true },
     { 'nvim-mini/mini.surround', version = false, event = "VeryLazy", config = true },
     { 'nvim-mini/mini.basics', version = false, event = "VeryLazy", config = true },
-    { 'nvim-mini/mini.bracketed', version = false, event = "VeryLazy", config = true },
+    {
+        'nvim-mini/mini.bracketed',
+        version = false,
+        event = "VeryLazy",
+        opts = {
+            buffer = { suffix = '' },  -- disable for buffers (use barbar keymaps)
+        }
+    },
     {
         'nvim-mini/mini.icons',
         version = false,
