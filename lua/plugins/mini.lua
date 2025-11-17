@@ -17,7 +17,7 @@ return {
                 }
             }
         end,
-    }
+    },
     {
         'nvim-mini/mini.files',
         version = false,
