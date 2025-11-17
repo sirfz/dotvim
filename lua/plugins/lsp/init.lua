@@ -6,7 +6,7 @@ local M = {
         -- "hrsh7th/cmp-nvim-lsp",
         "saghen/blink.cmp",
         -- "nvimtools/none-ls.nvim",
-        "RRethy/vim-illuminate",
+        -- "RRethy/vim-illuminate",
     },
     keys = {
         { "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "goto declaration" },

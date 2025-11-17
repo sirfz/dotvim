@@ -26,7 +26,7 @@ return {
                 elseif h > max_h then
                     h = max_h
                 end
-                return { winopts = { height = h, width = 0.60, row = 0.40 } }
+                return { no_resume = true, winopts = { height = h, width = 0.60, row = 0.40 } }
             end)
         end,
         keys = {

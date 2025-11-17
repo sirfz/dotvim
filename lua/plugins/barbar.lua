@@ -108,7 +108,11 @@ local M = {
             -- Or, specify all three
             Outline = {event = 'BufWinLeave', text = 'symbols-outline', align = 'right'},
         },
-    }
+    },
+    keys = {
+        { "<C-p>", ":BufferPick<CR>", mode = "n", desc = "Show buffer picker" },
+        { "<S-q>", ":BufferClose<CR>", mode = "n", desc = "Close buffer" },
+    },
 }
 
 return M

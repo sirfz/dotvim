@@ -1,5 +1,6 @@
 local M = {
     "windwp/nvim-autopairs",
+    enabled = false,
     event = "InsertEnter",
 }
 function M.config()

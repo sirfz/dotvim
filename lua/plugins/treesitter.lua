@@ -34,7 +34,7 @@ local M = {
             --     "yioneko/vim-tmindent",
             -- }
         },
-        "RRethy/vim-illuminate",
+        -- "RRethy/vim-illuminate",
     }
 }
 

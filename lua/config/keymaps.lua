@@ -24,23 +24,6 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- buffers
--- keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
--- bufferline
--- keymap("n", "]mb", ":BufferLineMoveNext<CR>", opts)
--- keymap("n", "[mb", ":BufferLineMovePrev<CR>", opts)
--- keymap("n", "]b", ":BufferLineCycleNext<CR>", opts)
--- keymap("n", "[b", ":BufferLineCyclePrev<CR>", opts)
--- barbar
-keymap("n", "]mb", ":BufferMoveNext<CR>", opts)
-keymap("n", "[mb", ":BufferMovePrevious<CR>", opts)
-keymap("n", "]b", ":BufferNext<CR>", opts)
-keymap("n", "[b", ":BufferPrevious<CR>", opts)
-keymap("n", "]B", ":BufferLast<CR>", opts)
-keymap("n", "[B", ":BufferFirst<CR>", opts)
-keymap("n", "<S-q>", ":BufferClose<CR>", opts)
-keymap("n", "<C-p>", ":BufferPick<CR>", opts)
-
 -- Better paste
 keymap("v", "p", '"_dP', opts)
 

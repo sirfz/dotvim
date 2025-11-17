@@ -1,27 +1,13 @@
 return {
     'saghen/blink.cmp',
     lazy = false, -- lazy loading handled internally
-    -- optional: provides snippets for the snippet source
+    version = '*',
+    -- build = 'cargo build --release',
     dependencies = {
-        {
-            'echasnovski/mini.icons',
-            version = '*',
-            lazy = true,
-            opts = function()
-                require("mini.icons").mock_nvim_web_devicons()
-                return {
-                    lsp = {
-                        copilot = { glyph = '', hl = 'MiniIconsOrange'  },
-                    }
-                }
-            end,
-        },
+        'nvim-mini/mini.icons',
         -- 'giuxtaposition/blink-cmp-copilot',
         "fang2hou/blink-copilot",
     },
-
-    build = 'cargo build --release',
-
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
