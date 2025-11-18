@@ -8,16 +8,10 @@ return {
         branch = 'main',
         cmd = { 'FzfLua' },
         opts = {
-            desc = "fzf with `bat` as native previewer",
-            winopts = { preview = { default = "bat" } },
-            manpages = { previewer = "man_native" },
-            helptags = { previewer = "help_native" },
-            tags = { previewer = "bat" },
-            btags = { previewer = "bat" },
+            { "fzf-native", "hide" },
         },
         config = function(_, opts)
             require('fzf-lua').setup(opts)
-            -- require("fzf-lua").register_ui_select({})
             require("fzf-lua").register_ui_select(function(_, items)
                 local min_h, max_h = 0.15, 0.70
                 local h = (#items + 4) / vim.o.lines
@@ -30,9 +24,9 @@ return {
             end)
         end,
         keys = {
-            -- { "<leader>ff", ":FzfLua files<CR>", desc = "Smart Find Files" },
+            { "<leader>ff", ":FzfLua files<CR>", desc = "Smart Find Files" },
             {
-                "<leader>ff", function()
+                "<leader>fe", function()
                     require('fzf-lua-frecency').frecency(
                         {
                             cwd_only=true,
@@ -41,9 +35,10 @@ return {
                         }
                     )
                 end,
-                desc = "Files"
+                desc = "Files frecency"
             },
             { "<leader>ft", ":FzfLua live_grep<CR>", desc = "Grep" },
+            { "<leader>fo", ":FzfLua oldfiles<CR>", desc = "Oldfiles" },
             {
                 "<leader>fm", function()
                     require('fzf-lua-frecency').frecency(
@@ -58,9 +53,15 @@ return {
             },
             { "<leader>fb", ":FzfLua buffers<CR>", desc = "Buffers" },
             { "<leader>fr", ":FzfLua resume<CR>", desc = "Resume" },
-            { "<leader>fk", ":FzfLua keymaps<CR>", desc = "Resume" },
-            { "<leader>fd", ":FzfLua diagnostics_document<CR>", desc = "Resume" },
-        },
+            { "<leader>fk", ":FzfLua keymaps<CR>", desc = "Keymaps" },
+            { "<leader>fd", ":FzfLua diagnostics_document<CR>", desc = "Buffer diagnostics" },
+            { 
+                "<C-x><C-f>",
+                mode = "i",
+                function() require("fzf-lua").complete_path() end,
+                desc = "Fuzzy complete path",
+            },
+        }
     },
     {
         'elanmed/fzf-lua-frecency.nvim',

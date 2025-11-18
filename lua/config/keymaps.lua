@@ -11,6 +11,20 @@ local opts = { silent = true }
 --   term_mode = "t",
 --   command_mode = "c",
 
+-- Paste linewise before/after current line
+-- Usage: `yiw` to yank a word and `]p` to put it on the next line.
+keymap("n", '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
+keymap("n", ']p', '<Cmd>exe "put " . v:register<CR>', { desc = 'Paste Below' })
+keymap('n', '>P', '<Cmd>exe "put! " . v:register<CR>>>^', { desc = 'Paste Above and Indent' })
+keymap('n', '>p', '<Cmd>exe "put " . v:register<CR>>>^', { desc = 'Paste Below and Indent' })
+keymap('n', '<P', '<Cmd>exe "put! " . v:register<CR><<^', { desc = 'Paste Above and Dedent' })
+keymap('n', '<p', '<Cmd>exe "put " . v:register<CR><<^', { desc = 'Paste Below and Dedent' })
+keymap('n', '=P', '<Cmd>exe "put! " . v:register<CR>==^', { desc = 'Paste Above and re-indent' })
+keymap('n', '=p', '<Cmd>exe "put " . v:register<CR>==^', { desc = 'Paste Below and re-indent' })
+
+-- Better paste
+keymap("v", "p", '"_dP', { desc = "improved visual paste", silent = true })
+
 -- Normal --
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -24,40 +38,14 @@ keymap("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
--- Better paste
-keymap("v", "p", '"_dP', opts)
-
 -- Insert --
--- Press jk fast to enter
+-- Press jk fast to exit insert mode
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
-
--- Plugins --
-
--- Telescope
--- keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
--- keymap("n", "<leader>fm", ":lua require('telescope').extensions.frecency.frecency()<CR>", opts)
--- keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
--- keymap("n", "<leader>ft", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
--- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
--- keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
--- keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
--- keymap("n", "<leader>fd", ":Telescope diagnostics bufnr=0<CR>", opts)
-
--- fzf
--- keymap("n", "<leader>ff", ":FzfLua files<CR>", opts)
--- keymap("n", "<leader>fm", ":FzfLua oldfiles<CR>", opts)
--- keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua-frecency').frecency({cwd_only=true, all_files=true})<CR>", opts)
--- keymap("n", "<leader>fm", "<cmd>lua require('fzf-lua-frecency').frecency({cwd_only=false, all_files=true})<CR>", opts)
--- keymap("n", "<leader>ft", ":FzfLua live_grep<CR>", opts)
--- keymap("n", "<leader>fb", ":FzfLua buffers<CR>", opts)
--- keymap("n", "<leader>fk", ":FzfLua keymaps<CR>", opts)
--- keymap("n", "<leader>fd", ":FzfLua diagnostics_document<CR>", opts)
--- keymap("n", "<leader>fr", ":FzfLua resume<CR>", opts)
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -84,7 +72,3 @@ keymap("n", "<leader>cc", ":TroubleClose<CR>", opts)
 -- portal
 keymap("n", "<leader>o", "<cmd>Portal jumplist backward<cr>", opts)
 keymap("n", "<leader>i", "<cmd>Portal jumplist forward<cr>", opts)
-
--- fzf filepath completion
-keymap({ "n", "v", "i" }, "<C-x><C-f>", function() require("fzf-lua").complete_path() end,
-       { silent = true, desc = "Fuzzy complete path" })
