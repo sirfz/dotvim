@@ -9,6 +9,9 @@ return {
         cmd = { 'FzfLua' },
         opts = {
             { "fzf-native", "hide" },
+            lsp = {
+                code_actions =  { no_resume = true },
+            },
         },
         config = function(_, opts)
             require('fzf-lua').setup(opts)
