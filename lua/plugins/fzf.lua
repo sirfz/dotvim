@@ -8,7 +8,7 @@ return {
         branch = 'main',
         cmd = { 'FzfLua' },
         opts = {
-            { "fzf-native", "hide" },
+            { "hide" },
             lsp = {
                 code_actions =  { no_resume = true },
             },
