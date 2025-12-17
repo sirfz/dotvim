@@ -74,5 +74,10 @@ return {
         'hat0uma/csvview.nvim',
         ft = "csv",
         config = true
+    },
+    {
+        "esmuellert/vscode-diff.nvim",
+        dependencies = { "MunifTanjim/nui.nvim" },
+        cmd = "CodeDiff",
     }
 }
