@@ -30,10 +30,19 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-    pattern = { "markdown" },
+    pattern = { "markdown", "markdown_inline" },
     callback = function()
+        vim.treesitter.start()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "lua", "bash", "python" },
+    callback = function()
+        vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+        vim.wo[0][0].foldmethod = 'expr'
     end,
 })
 

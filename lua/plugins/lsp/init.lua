@@ -11,7 +11,7 @@ local M = {
     keys = {
         { "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", desc = "goto declaration" },
         { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", desc = "goto definition" },
-        { "K", "<cmd>lua vim.lsp.buf.hover()<CR>", desc = "hover" },
+        { "K", "<cmd>lua vim.lsp.buf.hover({border = \"rounded\"})<CR>", desc = "hover" },
         { "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", desc = "goto implementation" },
         { "gr", "<cmd>lua vim.lsp.buf.references()<CR>", desc = "show references" },
         { "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", desc = "show diagnostics float" },
@@ -23,7 +23,7 @@ local M = {
         { "];", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", desc = "next diagnostic" },
         { "[;", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", desc = "previous diagnostic" },
         { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "rename symbol" },
-        { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", desc = "signature help" },
+        { "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help({border = \"rounded\"})<CR>", desc = "signature help" },
         { "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", desc = "diagnostics to loclist" },
     }
 }
@@ -71,14 +71,6 @@ function M.config()
 	}
 
 	vim.diagnostic.config(config)
-
-	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
-	})
-
-	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
-	})
 end
 
 return M

@@ -2,12 +2,6 @@ return {
     "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
     "nvim-tree/nvim-web-devicons",
 
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        event = "BufReadPre",
-        config = true
-    },
-
     -- Git
     {
         "tpope/vim-fugitive",
