@@ -14,7 +14,8 @@
     # install tools
     mise u -g rust@nightly node@22 rg fd bat fzf uv neovim
     # language servers
-    mise u -g pipx:ty pipx:pyrefly pipx:basedpyright pipx:ruff npm:@github/copilot-language-server opencode
+    mise u -g rust@latest  # for tree-sitter-cli
+    mise u -g pipx:pyrefly pipx:basedpyright pipx:ruff npm:@github/copilot-language-server opencode cargo:tree-sitter-cli
     ```
 
 ### Installation:
