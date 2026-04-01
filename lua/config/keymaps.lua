@@ -13,14 +13,14 @@ local opts = { silent = true }
 
 -- Paste linewise before/after current line
 -- Usage: `yiw` to yank a word and `]p` to put it on the next line.
-keymap("n", '[p', '<Cmd>exe "put! " . v:register<CR>', { desc = 'Paste Above' })
-keymap("n", ']p', '<Cmd>exe "put " . v:register<CR>', { desc = 'Paste Below' })
-keymap('n', '>P', '<Cmd>exe "put! " . v:register<CR>>>^', { desc = 'Paste Above and Indent' })
-keymap('n', '>p', '<Cmd>exe "put " . v:register<CR>>>^', { desc = 'Paste Below and Indent' })
-keymap('n', '<P', '<Cmd>exe "put! " . v:register<CR><<^', { desc = 'Paste Above and Dedent' })
-keymap('n', '<p', '<Cmd>exe "put " . v:register<CR><<^', { desc = 'Paste Below and Dedent' })
-keymap('n', '=P', '<Cmd>exe "put! " . v:register<CR>==^', { desc = 'Paste Above and re-indent' })
-keymap('n', '=p', '<Cmd>exe "put " . v:register<CR>==^', { desc = 'Paste Below and re-indent' })
+keymap("n", '[p', '<Cmd>exe "iput! " . v:register<CR>', { desc = 'Paste Above' })
+keymap("n", ']p', '<Cmd>exe "iput " . v:register<CR>', { desc = 'Paste Below' })
+keymap('n', '>P', '<Cmd>exe "iput! " . v:register<CR>>>^', { desc = 'Paste Above and Indent' })
+keymap('n', '>p', '<Cmd>exe "iput " . v:register<CR>>>^', { desc = 'Paste Below and Indent' })
+keymap('n', '<P', '<Cmd>exe "iput! " . v:register<CR><<^', { desc = 'Paste Above and Dedent' })
+keymap('n', '<p', '<Cmd>exe "iput " . v:register<CR><<^', { desc = 'Paste Below and Dedent' })
+keymap('n', '=P', '<Cmd>exe "iput! " . v:register<CR>==^', { desc = 'Paste Above and re-indent' })
+keymap('n', '=p', '<Cmd>exe "iput " . v:register<CR>==^', { desc = 'Paste Below and re-indent' })
 
 -- Better paste
 keymap("v", "p", '"_dP', { desc = "improved visual paste", silent = true })
