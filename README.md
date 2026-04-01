@@ -12,9 +12,8 @@
     # activate mise
     eval "$(~/.local/bin/mise activate bash)"
     # install tools
-    mise u -g rust@nightly node@22 rg fd bat fzf uv neovim
+    mise u -g rust@latest node@24 rg fd bat fzf uv neovim
     # language servers
-    mise u -g rust@latest  # for tree-sitter-cli
     mise u -g pipx:pyrefly pipx:basedpyright pipx:ruff npm:@github/copilot-language-server opencode cargo:tree-sitter-cli
     ```
 
