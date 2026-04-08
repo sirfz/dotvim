@@ -47,7 +47,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     end,
 })
 
-
 vim.api.nvim_create_autocmd({ "VimResized" }, {
     callback = function()
         vim.cmd("tabdo wincmd =")
@@ -62,10 +61,9 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
 
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
     callback = function()
-        vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
+        vim.hl.on_yank({ higroup = "Visual", timeout = 200 })
     end,
 })
-
 
 -- show cursor line only in active window
 vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
@@ -77,6 +75,7 @@ vim.api.nvim_create_autocmd({ "InsertLeave", "WinEnter" }, {
         end
     end,
 })
+
 vim.api.nvim_create_autocmd({ "InsertEnter", "WinLeave" }, {
     callback = function()
         local cl = vim.wo.cursorline
