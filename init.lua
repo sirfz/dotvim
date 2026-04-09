@@ -12,5 +12,9 @@ vim.g.maplocalleader = "\\"
 require("config.options")
 require("config.lazy")
 
+vim.cmd[[packadd nvim.undotree]]
+vim.cmd[[packadd nvim.difftool]]
+vim.cmd[[packadd nohlsearch]]
+
 require("config.autocmds")
 require("config.keymaps")
