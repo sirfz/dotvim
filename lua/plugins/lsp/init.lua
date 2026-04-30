@@ -28,6 +28,14 @@ local M = {
     }
 }
 
+function disable_lsp_in_fugitive(client, bufnr)
+    if vim.startswith(vim.api.nvim_buf_get_name(bufnr), 'fugitive://') then
+        vim.lsp.buf_detach_client(bufnr, client.id)
+        return true
+    end
+    return false
+end
+
 function M.config()
     local servers = {
         "basedpyright",
@@ -40,11 +48,24 @@ function M.config()
 
     for _, server in pairs(servers) do
         server = vim.split(server, "@")[1]
-        vim.lsp.enable(server)
         local require_ok, conf_opts = pcall(require, "plugins.lsp.settings." .. server)
         if require_ok then
+            if conf_opts.on_attach then
+                local on_attach = conf_opts.on_attach
+                conf_opts.on_attach = function(client, bufnr)
+                    if disable_lsp_in_fugitive(client, bufnr) then
+                        return
+                    end
+                    on_attach(client, bufnr)
+                end
+            else
+                conf_opts.on_attach = disable_lsp_in_fugitive
+            end
             vim.lsp.config(server, conf_opts)
+        else
+            vim.lsp.config(server, {on_attach = disable_lsp_in_fugitive})
         end
+        vim.lsp.enable(server)
     end
 
     local config = {
