@@ -73,5 +73,10 @@ return {
         "esmuellert/codediff.nvim",
         dependencies = { "MunifTanjim/nui.nvim" },
         cmd = "CodeDiff",
+    },
+    {
+        "chentoast/marks.nvim",
+        event = "VeryLazy",
+        opts = {},
     }
 }
