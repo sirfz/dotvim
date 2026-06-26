@@ -58,6 +58,7 @@ return {
             { "<leader>fr", ":FzfLua resume<CR>", desc = "Resume" },
             { "<leader>fk", ":FzfLua keymaps<CR>", desc = "Keymaps" },
             { "<leader>fd", ":FzfLua diagnostics_document<CR>", desc = "Buffer diagnostics" },
+            { "<leader>fs", ":FzfLua treesitter<CR>", desc = "treesitter objects" },
             { 
                 "<C-x><C-f>",
                 mode = "i",
