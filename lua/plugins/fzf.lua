@@ -28,32 +28,32 @@ return {
         end,
         keys = {
             { "<leader>ff", ":FzfLua files<CR>", desc = "Smart Find Files" },
-            {
-                "<leader>fe", function()
-                    require('fzf-lua-frecency').frecency(
-                        {
-                            cwd_only=true,
-                            all_files=true,
-                            fzf_opts={["--no-sort"] = false }
-                        }
-                    )
-                end,
-                desc = "Files frecency"
-            },
+            -- {
+            --     "<leader>fe", function()
+            --         require('fzf-lua-frecency').frecency(
+            --             {
+            --                 cwd_only=true,
+            --                 all_files=true,
+            --                 fzf_opts={["--no-sort"] = false }
+            --             }
+            --         )
+            --     end,
+            --     desc = "Files frecency"
+            -- },
             { "<leader>ft", ":FzfLua live_grep<CR>", desc = "Grep" },
             { "<leader>fo", ":FzfLua oldfiles<CR>", desc = "Oldfiles" },
-            {
-                "<leader>fm", function()
-                    require('fzf-lua-frecency').frecency(
-                        {
-                            cwd_only=false,
-                            all_files=true,
-                            fzf_opts={["--no-sort"] = false }
-                        }
-                    )
-                end,
-                desc = "Recent"
-            },
+            -- {
+            --     "<leader>fm", function()
+            --         require('fzf-lua-frecency').frecency(
+            --             {
+            --                 cwd_only=false,
+            --                 all_files=true,
+            --                 fzf_opts={["--no-sort"] = false }
+            --             }
+            --         )
+            --     end,
+            --     desc = "Recent"
+            -- },
             { "<leader>fb", ":FzfLua buffers<CR>", desc = "Buffers" },
             { "<leader>fr", ":FzfLua resume<CR>", desc = "Resume" },
             { "<leader>fk", ":FzfLua keymaps<CR>", desc = "Keymaps" },
@@ -67,10 +67,10 @@ return {
             },
         }
     },
-    {
-        'elanmed/fzf-lua-frecency.nvim',
-        enabled = true,
-        dependencies = 'ibhagwan/fzf-lua',
-        config = true,
-    }
+    -- {
+    --     'elanmed/fzf-lua-frecency.nvim',
+    --     enabled = true,
+    --     dependencies = 'ibhagwan/fzf-lua',
+    --     config = true,
+    -- }
 }

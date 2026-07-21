@@ -53,6 +53,9 @@ set -g focus-events on
 # ctrl+arrows enabled (not needed?)
 set-window-option -g xterm-keys on
 # vi key bindings
+# enable shift+enter / ctrl+enteg
+set -g extended-keys on
+set -g extended-keys-format csi-u
 set-window-option -g mode-keys vi
 # disable statusline
 set -g status off
