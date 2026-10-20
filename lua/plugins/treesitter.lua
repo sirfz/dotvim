@@ -8,7 +8,7 @@ local M = {
             "nvim-treesitter/nvim-treesitter-context",
         },
         config = function()
-            require('nvim-treesitter').install { "lua", "markdown", "markdown_inline", "bash", "python" }
+            require('nvim-treesitter').install { "lua", "markdown", "markdown_inline", "bash", "python", "rust", "toml" }
         end
     },
     {
