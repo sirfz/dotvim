@@ -6,7 +6,7 @@ return {
     dependencies = {
         'nvim-mini/mini.icons',
         -- 'giuxtaposition/blink-cmp-copilot',
-        "fang2hou/blink-copilot",
+        -- "fang2hou/blink-copilot",
     },
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
@@ -54,13 +54,13 @@ return {
         -- elsewhere in your config, without redefining it, via `opts_extend`
         sources = {
             providers = {
-                copilot = {
-                    name = 'copilot',
-                    -- module = 'blink-cmp-copilot',
-                    module = 'blink-copilot',
-                    score_offset = 100,
-                    async = true,
-                },
+                -- copilot = {
+                --     name = 'copilot',
+                --     -- module = 'blink-cmp-copilot',
+                --     module = 'blink-copilot',
+                --     score_offset = 100,
+                --     async = true,
+                -- },
                 buffer = {
                     opts = {
                         -- get all normal buffers
@@ -75,7 +75,8 @@ return {
                     fallbacks = {}
                 }
             },
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+            -- default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
         },
 
         -- optionally disable cmdline completions

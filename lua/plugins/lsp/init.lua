@@ -86,7 +86,7 @@ M[2].config = function()  -- M[2] is nvim-lspconfig
         -- "zuban",
         "pyrefly",
         -- "ty",
-        "copilot",
+        -- "copilot",
     }
 
     for _, server in pairs(servers) do

@@ -9,31 +9,31 @@ local M = {
         "hrsh7th/cmp-nvim-lua",
         "saadparwaiz1/cmp_luasnip",
         -- "windwp/nvim-autopairs",
-        {
-            "zbirenbaum/copilot.lua",
-            config = true,
-            cmd = "Copilot",
-            event = "InsertEnter",
-            opts = {
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            },
-            dependencies = {
-                {
-                    "zbirenbaum/copilot-cmp",
-                    config = true,
-                },
-                {
-                    "CopilotC-Nvim/CopilotChat.nvim",
-                    cmd = "CopilotChat",
-                    branch = "main",
-                    dependencies = {
-                        { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
-                    },
-                    config = true,
-                }
-            }
-        },
+        -- {
+        --     "zbirenbaum/copilot.lua",
+        --     config = true,
+        --     cmd = "Copilot",
+        --     event = "InsertEnter",
+        --     opts = {
+        --         suggestion = { enabled = false },
+        --         panel = { enabled = false },
+        --     },
+        --     dependencies = {
+        --         {
+        --             "zbirenbaum/copilot-cmp",
+        --             config = true,
+        --         },
+        --         {
+        --             "CopilotC-Nvim/CopilotChat.nvim",
+        --             cmd = "CopilotChat",
+        --             branch = "main",
+        --             dependencies = {
+        --                 { "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
+        --             },
+        --             config = true,
+        --         }
+        --     }
+        -- },
     }
 }
 
@@ -145,7 +145,7 @@ function M.config()
         sources = cmp.config.sources({
             { name = "nvim_lsp", group_index = 2 },
             -- Copilot Source
-            { name = "copilot", group_index = 2 },
+            -- { name = "copilot", group_index = 2 },
             { name = "path", group_index = 2 },
             {
                 name = "buffer",
