@@ -1,5 +1,6 @@
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
+vim.g.clipboard = "osc52"                       -- propagate clipboard via osc52 where supported
 vim.opt.cmdheight = 1                           -- more space in the neovim command line for displaying messages
 vim.opt.completeopt = "menu,menuone,noselect"   -- mostly just for cmp
 vim.opt.conceallevel = 0                        -- so that `` is visible in markdown files
